@@ -5,6 +5,7 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiElement;
 import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
+import de.espend.idea.php.drupal.DrupalProjectComponent;
 import de.espend.idea.php.drupal.utils.DrupalPattern;
 import fr.adrienbrault.idea.symfony2plugin.routing.RouteHelper;
 import org.jetbrains.annotations.Nullable;
@@ -17,6 +18,10 @@ public class PhpGoToDeclarationHandler implements GotoDeclarationHandler {
     @Nullable
     @Override
     public PsiElement[] getGotoDeclarationTargets(PsiElement psiElement, int i, Editor editor) {
+
+        if(!DrupalProjectComponent.isEnabled(psiElement)) {
+            return new PsiElement[0];
+        }
 
         List<PsiElement> psiElementList = new ArrayList<PsiElement>();
 

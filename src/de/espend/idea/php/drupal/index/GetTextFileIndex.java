@@ -6,7 +6,6 @@ import com.intellij.util.io.DataExternalizer;
 import com.intellij.util.io.EnumeratorStringDescriptor;
 import com.intellij.util.io.KeyDescriptor;
 import de.espend.idea.php.drupal.gettext.GettextResourceBundle;
-import fr.adrienbrault.idea.symfony2plugin.stubs.indexes.ServicesDefinitionStubIndex;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 

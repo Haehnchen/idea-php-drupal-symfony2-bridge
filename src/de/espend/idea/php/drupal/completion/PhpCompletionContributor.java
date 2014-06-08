@@ -1,20 +1,15 @@
 package de.espend.idea.php.drupal.completion;
 
-
 import com.intellij.codeInsight.completion.*;
 import com.intellij.patterns.PlatformPatterns;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.ProcessingContext;
-import com.jetbrains.php.lang.parser.PhpElementTypes;
-import com.jetbrains.php.lang.psi.elements.ArrayHashElement;
 import com.jetbrains.php.lang.psi.elements.FunctionReference;
 import com.jetbrains.php.lang.psi.elements.ParameterList;
 import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
-import de.espend.idea.php.drupal.utils.DrupalPattern;
+import de.espend.idea.php.drupal.DrupalProjectComponent;
 import de.espend.idea.php.drupal.utils.TranslationUtil;
-import fr.adrienbrault.idea.symfony2plugin.Symfony2ProjectComponent;
 import fr.adrienbrault.idea.symfony2plugin.routing.RouteHelper;
-import fr.adrienbrault.idea.symfony2plugin.util.PhpElementsUtil;
 import org.jetbrains.annotations.NotNull;
 
 public class PhpCompletionContributor extends CompletionContributor {
@@ -28,7 +23,7 @@ public class PhpCompletionContributor extends CompletionContributor {
             protected void addCompletions(@NotNull CompletionParameters completionParameters, ProcessingContext processingContext, @NotNull CompletionResultSet completionResultSet) {
 
                 PsiElement psiElement = completionParameters.getOriginalPosition();
-                if (psiElement == null || !Symfony2ProjectComponent.isEnabled(psiElement)) {
+                if(psiElement == null || !DrupalProjectComponent.isEnabled(psiElement)) {
                     return;
                 }
 
@@ -60,7 +55,7 @@ public class PhpCompletionContributor extends CompletionContributor {
             protected void addCompletions(@NotNull CompletionParameters completionParameters, ProcessingContext processingContext, @NotNull CompletionResultSet completionResultSet) {
 
                 PsiElement psiElement = completionParameters.getOriginalPosition();
-                if (psiElement == null || !Symfony2ProjectComponent.isEnabled(psiElement) || !DrupalPattern.isAfterArrayKey(psiElement, "route_name")) {
+                if(psiElement == null || !DrupalProjectComponent.isEnabled(psiElement)) {
                     return;
                 }
 

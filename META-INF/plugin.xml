@@ -67,6 +67,7 @@
 
       <completion.contributor language="PHP" implementationClass="de.espend.idea.php.drupal.completion.PhpCompletionContributor"/>
       <completion.contributor language="Twig" implementationClass="de.espend.idea.php.drupal.completion.TwigCompletionContributor"/>
+      <completion.contributor language="yaml" implementationClass="de.espend.idea.php.drupal.completion.YamlCompletionContributor"/>
 
       <gotoDeclarationHandler implementation="de.espend.idea.php.drupal.navigation.PhpGoToDeclarationHandler"/>
       <psi.referenceContributor implementation="de.espend.idea.php.drupal.references.PhpRouteReferenceContributor"/>
