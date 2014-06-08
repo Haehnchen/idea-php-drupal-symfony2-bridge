@@ -9,8 +9,10 @@
 <h1>Drupal Symfony2 Bridge</h1>
 
 <br>
-<a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">GitHub</a> | <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues">Issues</a><br> | <a href="http://symfony2-plugin.espend.de/">Documentation (Symfony2 Plugin)</a>
+<a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">GitHub</a> | <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues">Issues</a> | <a href="http://symfony2-plugin.espend.de/">Documentation (Symfony2 Plugin)</a>
 <br>
+
+<p>Integrates support for Symfony2 components in Drupal8 with <a href="http://plugins.jetbrains.com/plugin/7219">Symfony2 Plugin</a></p>
 
 <h2>Install</h2>
 <ul>
@@ -23,21 +25,20 @@
 <ul>
     <li>Twig/PHP: Routing</li>
     <li>Twig/PHP: Gettext support (just throw in a full po file into project)</li>
-    <li></li>
 </ul>
 
 <h2>Features (from Symfony2)</h2>
 <ul>
     <li>Full container support</li>
     <li>Twig extensions</li>
-    <li>...</li>
+    <li>and more...</li>
 </ul>
 
 <h2>Todo</h2>
 <ul>
     <li>Twig variables types and completion</li>
     <li>Twig namespaces for include, extends, macros, ...</li>
-    <li>...</li>
+    <li>and more...</li>
 </ul>
 
     ]]></description>
