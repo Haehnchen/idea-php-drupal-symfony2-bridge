@@ -5,13 +5,50 @@
   <vendor email="daniel@espendiller.net" url="http://www.espend.de">Daniel Espendiller</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+
+<h1>Drupal Symfony2 Bridge</h1>
+
+<br>
+<a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">GitHub</a> | <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues">Issues</a><br> | <a href="http://symfony2-plugin.espend.de/">Documentation (Symfony2 Plugin)</a>
+<br>
+
+<h2>Install</h2>
+<ul>
+    <li>Enabled Symfony2 Plugin per project (File > Settings > Symfony2 Plugin)</li>
+    <li>Install [Php Annotation](http://plugins.jetbrains.com/plugin/7320) plugin to enjoy all the annotation stuff</li>
+    <li>Plugin needs a valid PhpStorm indexer, use "File > Invalidate Caches / Restart" if something crazy is going on</li>
+</ul>
+
+<h2>Features</h2>
+<ul>
+    <li>Twig/PHP: Routing</li>
+    <li>Twig/PHP: Gettext support (just throw in a full po file into project)</li>
+    <li></li>
+</ul>
+
+<h2>Features (from Symfony2)</h2>
+<ul>
+    <li>Full container support</li>
+    <li>Twig extensions</li>
+    <li>...</li>
+</ul>
+
+<h2>Todo</h2>
+<ul>
+    <li>Twig variables types and completion</li>
+    <li>Twig namespaces for include, extends, macros, ...</li>
+    <li>...</li>
+</ul>
+
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+
+<h2>0.1</h2>
+<ul>
+    <li>initial release (see feature list)</li>
+</ul>
+
     ]]>
   </change-notes>
 
