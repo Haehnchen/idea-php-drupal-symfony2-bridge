@@ -1,0 +1,57 @@
+<idea-plugin version="2" url="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">
+  <id>de.espend.idea.php.drupal</id>
+  <name>Drupal Symfony2 Bridge</name>
+  <version>0.1</version>
+  <vendor email="daniel@espendiller.net" url="http://www.espend.de">Daniel Espendiller</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="130.1"/>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+
+      <fileBasedIndex implementation="de.espend.idea.php.drupal.index.GetTextFileIndex"/>
+
+      <completion.contributor language="PHP" implementationClass="de.espend.idea.php.drupal.completion.PhpCompletionContributor"/>
+      <completion.contributor language="Twig" implementationClass="de.espend.idea.php.drupal.completion.TwigCompletionContributor"/>
+
+      <gotoDeclarationHandler implementation="de.espend.idea.php.drupal.navigation.PhpGoToDeclarationHandler"/>
+      <psi.referenceContributor implementation="de.espend.idea.php.drupal.references.PhpRouteReferenceContributor"/>
+
+  </extensions>
+
+  <application-components>
+    <!-- Add your application components here -->
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+    <depends>com.jetbrains.php</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.jetbrains.twig</depends>
+    <depends>org.jetbrains.plugins.yaml</depends>
+    <depends>fr.adrienbrault.idea.symfony2plugin</depends>
+
+</idea-plugin>
