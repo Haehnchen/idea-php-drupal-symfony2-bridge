@@ -4,9 +4,8 @@ import com.intellij.codeInsight.completion.*;
 import com.intellij.patterns.PlatformPatterns;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.ProcessingContext;
-import com.jetbrains.php.lang.psi.elements.FunctionReference;
-import com.jetbrains.php.lang.psi.elements.ParameterList;
-import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
+import com.jetbrains.php.lang.parser.PhpElementTypes;
+import com.jetbrains.php.lang.psi.elements.*;
 import de.espend.idea.php.drupal.DrupalProjectComponent;
 import de.espend.idea.php.drupal.utils.TranslationUtil;
 import fr.adrienbrault.idea.symfony2plugin.routing.RouteHelper;
@@ -59,7 +58,19 @@ public class PhpCompletionContributor extends CompletionContributor {
                     return;
                 }
 
-                completionResultSet.addAllElements(RouteHelper.getRoutesLookupElements(psiElement.getProject()));
+                PsiElement arrayValueString = psiElement.getContext();
+                if (arrayValueString instanceof StringLiteralExpression) {
+                    PsiElement arrayValue = arrayValueString.getParent();
+                    if(arrayValue != null && arrayValue.getNode().getElementType() == PhpElementTypes.ARRAY_VALUE) {
+                        PsiElement arrayHashElement = arrayValue.getParent();
+                        if(arrayHashElement instanceof ArrayHashElement) {
+                            PhpPsiElement arrayKey = ((ArrayHashElement) arrayHashElement).getKey();
+                            if(arrayKey instanceof StringLiteralExpression && "route_name".equals(((StringLiteralExpression) arrayKey).getContents())) {
+                                completionResultSet.addAllElements(RouteHelper.getRoutesLookupElements(psiElement.getProject()));
+                            }
+                        }
+                    }
+                }
 
             }
 
