@@ -70,6 +70,7 @@
   <extensions defaultExtensionNs="com.intellij">
 
       <fileBasedIndex implementation="de.espend.idea.php.drupal.index.GetTextFileIndex"/>
+      <fileBasedIndex implementation="de.espend.idea.php.drupal.index.ConfigSchemaIndex"/>
 
       <completion.contributor language="PHP" implementationClass="de.espend.idea.php.drupal.completion.PhpCompletionContributor"/>
       <completion.contributor language="Twig" implementationClass="de.espend.idea.php.drupal.completion.TwigCompletionContributor"/>
@@ -79,6 +80,10 @@
       <psi.referenceContributor implementation="de.espend.idea.php.drupal.references.PhpRouteReferenceContributor"/>
 
   </extensions>
+
+    <extensions defaultExtensionNs="fr.adrienbrault.idea.symfony2plugin.extension">
+        <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.config.ConfigCompletionGoto"/>
+    </extensions>
 
   <application-components>
     <!-- Add your application components here -->
