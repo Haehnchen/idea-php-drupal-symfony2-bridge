@@ -1,7 +1,7 @@
 <idea-plugin version="2" url="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">
   <id>de.espend.idea.php.drupal</id>
   <name>Drupal Symfony2 Bridge</name>
-  <version>0.1.1</version>
+  <version>0.2</version>
   <vendor email="daniel@espendiller.net" url="http://www.espend.de">Daniel Espendiller</vendor>
 
   <description><![CDATA[
@@ -25,6 +25,7 @@
 <ul>
     <li>Twig/PHP: Routing</li>
     <li>Twig/PHP: Gettext support (just throw in a full po file into project)</li>
+    <li>PHP: Config index</li>
 </ul>
 
 <h2>Features (from Symfony2)</h2>
@@ -38,12 +39,18 @@
 <ul>
     <li>Twig variables types and completion</li>
     <li>Twig namespaces for include, extends, macros, ...</li>
-    <li>and more...</li>
+    <li>Child mapping of \Drupal\Core\Config\Config::get</li>
 </ul>
 
     ]]></description>
 
   <change-notes><![CDATA[
+
+<h2>0.2</h2>
+<ul>
+    <li>Fix / update more valid route signatures for Drupal8 beta release</li>
+    <li>Add indexer, completion and navigation for config values</li>
+</ul>
 
 <h2>0.1.1</h2>
 <ul>
