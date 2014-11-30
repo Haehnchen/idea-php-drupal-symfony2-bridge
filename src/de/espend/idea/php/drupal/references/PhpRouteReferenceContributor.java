@@ -10,6 +10,9 @@ import fr.adrienbrault.idea.symfony2plugin.routing.RouteReference;
 import fr.adrienbrault.idea.symfony2plugin.util.MethodMatcher;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 public class PhpRouteReferenceContributor extends PsiReferenceContributor {
 
     public static MethodMatcher.CallToSignature[] GENERATOR_SIGNATURES = new MethodMatcher.CallToSignature[] {

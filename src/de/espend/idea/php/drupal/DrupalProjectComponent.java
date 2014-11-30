@@ -6,6 +6,9 @@ import com.intellij.psi.PsiElement;
 import fr.adrienbrault.idea.symfony2plugin.Symfony2ProjectComponent;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 public class DrupalProjectComponent {
 
     public static boolean isEnabled(Project project) {

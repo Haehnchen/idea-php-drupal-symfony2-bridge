@@ -25,6 +25,9 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]> {
 
     public static final ID<String, String[]> KEY = ID.create("de.espend.idea.php.drupal.config_schema");

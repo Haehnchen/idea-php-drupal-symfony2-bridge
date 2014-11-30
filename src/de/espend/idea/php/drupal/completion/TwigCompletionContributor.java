@@ -9,6 +9,9 @@ import de.espend.idea.php.drupal.utils.TranslationUtil;
 import fr.adrienbrault.idea.symfony2plugin.TwigHelper;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 public class TwigCompletionContributor extends CompletionContributor {
 
     public TwigCompletionContributor() {

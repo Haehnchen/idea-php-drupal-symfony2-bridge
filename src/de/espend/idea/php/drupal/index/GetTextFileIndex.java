@@ -12,6 +12,9 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 public class GetTextFileIndex extends FileBasedIndexExtension<String, Void> {
 
     public static final ID<String, Void> KEY = ID.create("de.espend.idea.php.drupal.gettext");

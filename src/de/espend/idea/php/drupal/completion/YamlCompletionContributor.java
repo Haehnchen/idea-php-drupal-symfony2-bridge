@@ -9,6 +9,9 @@ import de.espend.idea.php.drupal.DrupalProjectComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.yaml.psi.YAMLDocument;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 public class YamlCompletionContributor extends CompletionContributor {
 
     final private static String[] MODULE_KEYS = new String[] {"name", "type", "description", "package", "version", "core", "configure", "dependencies", "required"};

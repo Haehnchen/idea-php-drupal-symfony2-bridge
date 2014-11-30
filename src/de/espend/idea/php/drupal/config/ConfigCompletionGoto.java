@@ -33,6 +33,9 @@ import org.jetbrains.yaml.psi.YAMLKeyValue;
 
 import java.util.*;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 public class ConfigCompletionGoto implements GotoCompletionRegistrar {
 
     private static MethodMatcher.CallToSignature[] CONFIG = new MethodMatcher.CallToSignature[] {

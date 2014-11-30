@@ -11,6 +11,9 @@ import de.espend.idea.php.drupal.utils.TranslationUtil;
 import fr.adrienbrault.idea.symfony2plugin.routing.RouteHelper;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 public class PhpCompletionContributor extends CompletionContributor {
 
     public PhpCompletionContributor() {
