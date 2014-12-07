@@ -64,7 +64,12 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]>
                         return map;
                     }
 
-                    for(YAMLKeyValue yamlKeyValue: PsiTreeUtil.getChildrenOfType(yamlDocument, YAMLKeyValue.class)) {
+                    YAMLKeyValue[] childrenOfType = PsiTreeUtil.getChildrenOfType(yamlDocument, YAMLKeyValue.class);
+                    if(childrenOfType == null) {
+                        return map;
+                    }
+
+                    for(YAMLKeyValue yamlKeyValue: childrenOfType) {
                         String key = PsiElementUtils.trimQuote(yamlKeyValue.getKeyText());
 
                         if(StringUtils.isNotBlank(key) && !key.contains("*")) {
