@@ -1,5 +1,8 @@
 Drupal8 Symfony2 Bridge Plugin
 ==========================
+[![Version](http://phpstorm.espend.de/badge/7487/version)](https://plugins.jetbrains.com/plugin/7487)
+[![Downloads](http://phpstorm.espend.de/badge/7487/downloads)](https://plugins.jetbrains.com/plugin/7487)
+[![Downloads last month](http://phpstorm.espend.de/badge/7487/last-month)](https://plugins.jetbrains.com/plugin/7487)
 
 Provides Symfony2 components support for Drupal8 in PhpStorm and IntelliJ
 
