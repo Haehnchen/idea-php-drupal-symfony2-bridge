@@ -1,22 +1,22 @@
 <idea-plugin version="2" url="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">
   <id>de.espend.idea.php.drupal</id>
-  <name>Drupal Symfony2 Bridge</name>
+  <name>Drupal Symfony Bridge</name>
   <version>0.2.1</version>
   <vendor email="daniel@espendiller.net" url="http://www.espend.de">Daniel Espendiller</vendor>
 
   <description><![CDATA[
 
-<h1>Drupal Symfony2 Bridge</h1>
+<h1>Drupal Symfony Bridge</h1>
 
 <br>
 <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">GitHub</a> | <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues">Issues</a> | <a href="http://symfony2-plugin.espend.de/">Documentation (Symfony2 Plugin)</a>
 <br>
 
-<p>Integrates support for Symfony2 components in Drupal8 with <a href="http://plugins.jetbrains.com/plugin/7219">Symfony2 Plugin</a></p>
+<p>Integrates support for Symfony components in Drupal8 with <a href="http://plugins.jetbrains.com/plugin/7219">Symfony Plugin</a></p>
 
 <h2>Install</h2>
 <ul>
-    <li>Enabled Symfony2 Plugin per project (File > Settings > Symfony2 Plugin)</li>
+    <li>Enabled Symfony Plugin per project (File > Settings > Symfony2 Plugin)</li>
     <li>Install [Php Annotation](http://plugins.jetbrains.com/plugin/7320) plugin to enjoy all the annotation stuff</li>
     <li>Plugin needs a valid PhpStorm indexer, use "File > Invalidate Caches / Restart" if something crazy is going on</li>
 </ul>
@@ -28,7 +28,7 @@
     <li>PHP: Config index</li>
 </ul>
 
-<h2>Features (from Symfony2)</h2>
+<h2>Features (from Symfony)</h2>
 <ul>
     <li>Full container support</li>
     <li>Twig extensions</li>
