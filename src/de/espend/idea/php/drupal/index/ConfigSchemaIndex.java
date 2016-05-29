@@ -1,9 +1,7 @@
 package de.espend.idea.php.drupal.index;
 
 import com.intellij.ide.highlighter.XmlFileType;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.indexing.*;
 import com.intellij.util.io.DataExternalizer;
 import com.intellij.util.io.EnumeratorStringDescriptor;
@@ -16,7 +14,6 @@ import gnu.trove.THashMap;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.yaml.YAMLFileType;
-import org.jetbrains.yaml.psi.YAMLDocument;
 import org.jetbrains.yaml.psi.YAMLFile;
 import org.jetbrains.yaml.psi.YAMLKeyValue;
 
@@ -42,56 +39,40 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]>
     @NotNull
     @Override
     public DataIndexer<String, String[], FileContent> getIndexer() {
-        return new DataIndexer<String, String[], FileContent>() {
-            @NotNull
-            @Override
-            public Map<String, String[]> map(FileContent inputData) {
-                Map<String, String[]> map = new THashMap<String, String[]>();
+        return inputData -> {
+            Map<String, String[]> map = new THashMap<String, String[]>();
 
-                PsiFile psiFile = inputData.getPsiFile();
-                if(!Symfony2ProjectComponent.isEnabledForIndex(psiFile.getProject())) {
-                    return map;
-                }
-
-                if(psiFile instanceof YAMLFile) {
-
-                    if(!isValidForIndex(inputData, psiFile)) {
-                        return map;
-                    }
-
-                    YAMLDocument yamlDocument = PsiTreeUtil.getChildOfType(psiFile, YAMLDocument.class);
-                    if(yamlDocument == null) {
-                        return map;
-                    }
-
-                    YAMLKeyValue[] childrenOfType = PsiTreeUtil.getChildrenOfType(yamlDocument, YAMLKeyValue.class);
-                    if(childrenOfType == null) {
-                        return map;
-                    }
-
-                    for(YAMLKeyValue yamlKeyValue: childrenOfType) {
-                        String key = PsiElementUtils.trimQuote(yamlKeyValue.getKeyText());
-
-                        if(StringUtils.isNotBlank(key) && !key.contains("*")) {
-                            Collection<String> mappings = new ArrayList<String>();
-                            YAMLKeyValue mapping = YamlHelper.getYamlKeyValue(yamlKeyValue, "mapping");
-                            if(mapping != null) {
-                                Set<String> keySet = YamlHelper.getKeySet(mapping);
-                                if(keySet != null) {
-                                    mappings.addAll(keySet);
-                                }
-                            }
-
-                            map.put(key, mappings.toArray(new String[mappings.size()]));
-                        }
-                    }
-
-                    return map;
-                }
-
+            PsiFile psiFile = inputData.getPsiFile();
+            if(!Symfony2ProjectComponent.isEnabledForIndex(psiFile.getProject())) {
                 return map;
             }
 
+            if(!(psiFile instanceof YAMLFile) || !isValidForIndex(inputData, psiFile)) {
+                return map;
+            }
+
+            for(YAMLKeyValue yamlKeyValue: YamlHelper.getTopLevelKeyValues((YAMLFile) psiFile)) {
+                String key = PsiElementUtils.trimQuote(yamlKeyValue.getKeyText());
+
+                if(StringUtils.isBlank(key) || key.contains("*")) {
+                    continue;
+                }
+
+                Collection<String> mappings = new ArrayList<String>();
+                YAMLKeyValue mapping = YamlHelper.getYamlKeyValue(yamlKeyValue, "mapping");
+                if(mapping == null) {
+                    continue;
+                }
+
+                Set<String> keySet = YamlHelper.getKeySet(mapping);
+                if(keySet != null) {
+                    mappings.addAll(keySet);
+                }
+
+                map.put(key, mappings.toArray(new String[mappings.size()]));
+            }
+
+            return map;
         };
 
     }
@@ -111,12 +92,8 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]>
     @NotNull
     @Override
     public FileBasedIndex.InputFilter getInputFilter() {
-        return new FileBasedIndex.InputFilter() {
-            @Override
-            public boolean acceptInput(@NotNull VirtualFile file) {
-                return file.getFileType() == YAMLFileType.YML || file.getFileType() == XmlFileType.INSTANCE;
-            }
-        };
+        return file ->
+            file.getFileType() == YAMLFileType.YML || file.getFileType() == XmlFileType.INSTANCE;
     }
 
     @Override
@@ -126,7 +103,7 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]>
 
     @Override
     public int getVersion() {
-        return 1;
+        return 2;
     }
 
     public static boolean isValidForIndex(FileContent inputData, PsiFile psiFile) {
@@ -138,9 +115,6 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]>
 
         return true;
     }
-
-
-
 }
 
 
