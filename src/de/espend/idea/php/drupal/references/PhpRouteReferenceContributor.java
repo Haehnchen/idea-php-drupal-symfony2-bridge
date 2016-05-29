@@ -21,6 +21,7 @@ public class PhpRouteReferenceContributor extends PsiReferenceContributor {
         new MethodMatcher.CallToSignature("\\Drupal\\Core\\Routing\\UrlGenerator", "getPathFromRoute"),
         new MethodMatcher.CallToSignature("\\Drupal\\Core\\Routing\\UrlGenerator", "generateFromRoute"),
         new MethodMatcher.CallToSignature("\\Drupal\\Core\\Url", "fromRoute"),
+        new MethodMatcher.CallToSignature("\\Drupal\\Core\\Form\\FormStateInterface", "setRedirect"), // @TODO parameter
     };
 
     @Override
