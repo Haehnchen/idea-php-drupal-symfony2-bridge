@@ -101,6 +101,7 @@
         <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.config.ConfigCompletionGoto"/>
         <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.registrar.YamlPermissionGotoCompletion"/>
         <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.registrar.YamlEntityFormGotoCompletion"/>
+        <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.registrar.ControllerCompletion"/>
     </extensions>
 
   <application-components>

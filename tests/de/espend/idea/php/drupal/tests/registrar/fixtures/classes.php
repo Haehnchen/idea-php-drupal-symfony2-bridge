@@ -14,3 +14,18 @@ namespace Drupal\Foo\Entity
     {
     }
 }
+
+namespace Drupal\Core\Controller
+{
+    abstract class ControllerBase {};
+}
+
+namespace Drupal\contact\Controller {
+
+    use Drupal\Core\Controller\ControllerBase;
+
+    class ContactController extends ControllerBase {
+        public function foo() {}
+        private function privateBar() {}
+    }
+}
