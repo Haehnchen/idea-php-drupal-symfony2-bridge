@@ -10,16 +10,15 @@ import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.indexing.FileBasedIndex;
 import de.espend.idea.php.drupal.DrupalProjectComponent;
 import de.espend.idea.php.drupal.index.PermissionIndex;
+import de.espend.idea.php.drupal.registrar.utils.YamlRegistrarUtil;
 import de.espend.idea.php.drupal.utils.IndexUtil;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionProvider;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionRegistrar;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionRegistrarParameter;
 import fr.adrienbrault.idea.symfony2plugin.config.yaml.YamlElementPatternHelper;
-import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.yaml.YAMLUtil;
 import org.jetbrains.yaml.psi.YAMLFile;
-import org.jetbrains.yaml.psi.YAMLScalar;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -55,14 +54,8 @@ public class YamlPermissionGotoCompletion implements GotoCompletionRegistrar {
         @NotNull
         @Override
         public Collection<PsiElement> getPsiTargets(PsiElement psiElement) {
-            PsiElement parent = psiElement.getParent();
-
-            if(!(parent instanceof YAMLScalar)) {
-                return Collections.emptyList();
-            }
-
-            String text = ((YAMLScalar) parent).getTextValue();
-            if(StringUtils.isBlank(text)) {
+            String text = YamlRegistrarUtil.getYamlScalarKey(psiElement);
+            if(text == null) {
                 return Collections.emptyList();
             }
 
