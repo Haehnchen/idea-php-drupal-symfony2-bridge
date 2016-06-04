@@ -92,6 +92,8 @@
       <gotoDeclarationHandler implementation="de.espend.idea.php.drupal.navigation.PhpGoToDeclarationHandler"/>
       <psi.referenceContributor implementation="de.espend.idea.php.drupal.references.PhpRouteReferenceContributor"/>
 
+      <codeInsight.lineMarkerProvider language="yaml" implementationClass="de.espend.idea.php.drupal.linemarker.RouteFormLineMarkerProvider"/>
+
   </extensions>
 
     <extensions defaultExtensionNs="fr.adrienbrault.idea.symfony2plugin.extension">
