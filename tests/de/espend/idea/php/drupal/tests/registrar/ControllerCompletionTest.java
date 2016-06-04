@@ -34,6 +34,13 @@ public class ControllerCompletionTest extends DrupalLightCodeInsightFixtureTestC
                 "    _controller: '<caret>'",
             "\\Drupal\\contact\\Controller\\ContactController::privateBar"
         );
+
+        assertCompletionNotContains(YAMLFileType.YML, "" +
+                "config.import_full:\n" +
+                "  defaults:\n" +
+                "    _controller: '<caret>'",
+            "\\Drupal\\contact\\Controller\\ContactController::__construct"
+        );
     }
 
 }

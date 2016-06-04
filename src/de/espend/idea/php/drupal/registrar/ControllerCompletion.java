@@ -46,7 +46,7 @@ public class ControllerCompletion implements GotoCompletionRegistrar {
 
             for (PhpClass phpClass : PhpIndex.getInstance(getProject()).getAllSubclasses("Drupal\\Core\\Controller\\ControllerBase")) {
                 for (Method method : phpClass.getOwnMethods()) {
-                    if(!method.getAccess().isPublic()) {
+                    if(!method.getAccess().isPublic() || method.isAbstract() || method.getName().startsWith("__")) {
                         continue;
                     }
 
