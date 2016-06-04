@@ -24,7 +24,7 @@ public class ConfigSchemaIndexTest extends DrupalLightCodeInsightFixtureTestCase
         assertIndexContains(ConfigSchemaIndex.KEY, "action.settings");
 
         assertIndexContainsKeyWithValue(ConfigSchemaIndex.KEY, "action.settings", value ->
-            ArrayUtils.contains(value, "recursion_limit")
+            value != null && ArrayUtils.contains(value, "recursion_limit")
         );
     }
 }

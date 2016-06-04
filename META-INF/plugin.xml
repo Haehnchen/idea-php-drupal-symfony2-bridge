@@ -83,6 +83,7 @@
 
       <fileBasedIndex implementation="de.espend.idea.php.drupal.index.GetTextFileIndex"/>
       <fileBasedIndex implementation="de.espend.idea.php.drupal.index.ConfigSchemaIndex"/>
+      <fileBasedIndex implementation="de.espend.idea.php.drupal.index.PermissionIndex"/>
 
       <completion.contributor language="PHP" implementationClass="de.espend.idea.php.drupal.completion.PhpCompletionContributor"/>
       <completion.contributor language="Twig" implementationClass="de.espend.idea.php.drupal.completion.TwigCompletionContributor"/>
@@ -95,6 +96,7 @@
 
     <extensions defaultExtensionNs="fr.adrienbrault.idea.symfony2plugin.extension">
         <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.config.ConfigCompletionGoto"/>
+        <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.registrar.YamlPermissionGotoCompletion"/>
     </extensions>
 
   <application-components>
