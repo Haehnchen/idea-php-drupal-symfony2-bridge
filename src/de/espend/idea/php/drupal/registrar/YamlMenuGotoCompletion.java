@@ -1,8 +1,11 @@
 package de.espend.idea.php.drupal.registrar;
 
 import com.intellij.codeInsight.lookup.LookupElement;
+import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.patterns.PlatformPatterns;
+import com.intellij.patterns.PsiElementPattern;
 import com.intellij.psi.PsiElement;
+import de.espend.idea.php.drupal.DrupalIcons;
 import de.espend.idea.php.drupal.DrupalProjectComponent;
 import de.espend.idea.php.drupal.index.MenuIndex;
 import de.espend.idea.php.drupal.registrar.utils.YamlRegistrarUtil;
@@ -23,12 +26,23 @@ import java.util.Collections;
 public class YamlMenuGotoCompletion implements GotoCompletionRegistrar {
     @Override
     public void register(GotoCompletionRegistrarParameter registrar) {
-        registrar.register(PlatformPatterns.and(PlatformPatterns.psiFile().withName(PlatformPatterns.string().endsWith(".menu.yml")), YamlElementPatternHelper.getSingleLineScalarKey("parent")), psiElement -> {
+        PsiElementPattern.Capture<PsiElement> menuPattern = PlatformPatterns.psiElement().inFile(PlatformPatterns.psiFile().withName(PlatformPatterns.string().endsWith(".menu.yml")));
+
+        registrar.register(PlatformPatterns.and(YamlElementPatternHelper.getSingleLineScalarKey("parent"), menuPattern), psiElement -> {
             if(!DrupalProjectComponent.isEnabled(psiElement)) {
                 return null;
             }
 
             return new ParentMenu(psiElement);
+        });
+
+
+        registrar.register(PlatformPatterns.and(YamlElementPatternHelper.getWithFirstRootKey(), menuPattern), psiElement -> {
+            if(!DrupalProjectComponent.isEnabled(psiElement)) {
+                return null;
+            }
+
+            return new MenuKeys(psiElement);
         });
     }
 
@@ -52,6 +66,30 @@ public class YamlMenuGotoCompletion implements GotoCompletionRegistrar {
             }
 
             return new ArrayList<>(IndexUtil.getMenuForId(getProject(), text));
+        }
+    }
+
+    private static class MenuKeys extends GotoCompletionProvider {
+        MenuKeys(PsiElement psiElement) {
+            super(psiElement);
+        }
+
+        @NotNull
+        @Override
+        public Collection<LookupElement> getLookupElements() {
+
+            Collection<LookupElement> lookupElements = new ArrayList<>();
+            for (String s : new String[]{"title", "route_name", "enabled", "parent", "description", "weight"}) {
+                lookupElements.add(LookupElementBuilder.create(s).withIcon(DrupalIcons.DRUPAL).withTypeText("Menu", true));
+            }
+
+            return lookupElements;
+        }
+
+        @NotNull
+        @Override
+        public Collection<PsiElement> getPsiTargets(PsiElement psiElement) {
+            return Collections.emptyList();
         }
     }
 }

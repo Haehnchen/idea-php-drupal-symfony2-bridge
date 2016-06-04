@@ -1,6 +1,5 @@
 package de.espend.idea.php.drupal.tests.registrar;
 
-import com.intellij.patterns.PlatformPatterns;
 import de.espend.idea.php.drupal.tests.DrupalLightCodeInsightFixtureTestCase;
 
 import java.io.File;
@@ -31,6 +30,14 @@ public class YamlMenuGotoCompletionTest extends DrupalLightCodeInsightFixtureTes
             "config.import_full:\n" +
             "  parent: <caret>" +
             "search.view"
+        );
+    }
+
+    public void testMenuKeyCompletion() {
+        assertCompletionContains("foo.menu.yml", "" +
+            "config.import_full:\n" +
+            "  <caret>: foo" +
+            "route_name"
         );
     }
 }
