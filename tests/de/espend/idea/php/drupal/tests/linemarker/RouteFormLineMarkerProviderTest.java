@@ -28,4 +28,11 @@ public class RouteFormLineMarkerProviderTest extends DrupalLightCodeInsightFixtu
         ), new LineMarker.ToolTipEqualsAssert("Navigate to form"));
     }
 
+    public void testLinemarkerForEntityForm() {
+        assertLineMarker(myFixture.configureByText(YAMLFileType.YML, "" +
+            "config.export_full:\n" +
+            "  defaults:\n" +
+            "    _entity_form: 'contact_form'"
+        ), new LineMarker.ToolTipEqualsAssert("Navigate to form"));
+    }
 }

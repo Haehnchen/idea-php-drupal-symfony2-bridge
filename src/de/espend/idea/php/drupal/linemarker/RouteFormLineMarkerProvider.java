@@ -5,9 +5,9 @@ import com.intellij.codeInsight.daemon.LineMarkerProvider;
 import com.intellij.codeInsight.navigation.NavigationGutterIconBuilder;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.util.PsiTreeUtil;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 import de.espend.idea.php.drupal.DrupalProjectComponent;
+import de.espend.idea.php.drupal.utils.IndexUtil;
 import fr.adrienbrault.idea.symfony2plugin.Symfony2Icons;
 import fr.adrienbrault.idea.symfony2plugin.config.yaml.YamlElementPatternHelper;
 import fr.adrienbrault.idea.symfony2plugin.util.PhpElementsUtil;
@@ -17,6 +17,7 @@ import org.jetbrains.yaml.psi.YAMLKeyValue;
 import org.jetbrains.yaml.psi.YAMLMapping;
 import org.jetbrains.yaml.psi.YAMLScalar;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -48,7 +49,9 @@ public class RouteFormLineMarkerProvider implements LineMarkerProvider {
 
     private void collectRouteInlineClasses(@NotNull Collection<LineMarkerInfo> results, @NotNull Project project, @NotNull PsiElement psiElement) {
 
-        if(!YamlElementPatternHelper.getSingleLineScalarKey("_form").accepts(psiElement)) {
+        if(!(YamlElementPatternHelper.getSingleLineScalarKey("_form").accepts(psiElement) ||
+            YamlElementPatternHelper.getSingleLineScalarKey("_entity_form").accepts(psiElement))
+            ) {
             return;
         }
 
@@ -59,7 +62,9 @@ public class RouteFormLineMarkerProvider implements LineMarkerProvider {
 
         String textValue = ((YAMLScalar) yamlScalar).getTextValue();
 
-        Collection<PhpClass> classesInterface = PhpElementsUtil.getClassesInterface(project, textValue);
+        Collection<PhpClass> classesInterface = new ArrayList<>(PhpElementsUtil.getClassesInterface(project, textValue));
+        classesInterface.addAll(IndexUtil.getFormClassForId(project, textValue));
+
         if(classesInterface.size() == 0) {
             return;
         }

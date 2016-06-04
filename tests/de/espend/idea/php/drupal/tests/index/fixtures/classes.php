@@ -1,12 +1,5 @@
 <?php
 
-namespace Foo
-{
-    class FooBar
-    {
-    }
-}
-
 namespace Drupal\Foo\Entity
 {
 
@@ -21,3 +14,4 @@ namespace Drupal\Foo\Entity
     {
     }
 }
+
