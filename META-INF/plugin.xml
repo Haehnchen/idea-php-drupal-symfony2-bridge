@@ -85,6 +85,7 @@
       <fileBasedIndex implementation="de.espend.idea.php.drupal.index.ConfigSchemaIndex"/>
       <fileBasedIndex implementation="de.espend.idea.php.drupal.index.PermissionIndex"/>
       <fileBasedIndex implementation="de.espend.idea.php.drupal.index.ConfigEntityTypeAnnotationIndex"/>
+      <fileBasedIndex implementation="de.espend.idea.php.drupal.index.MenuIndex"/>
 
       <completion.contributor language="PHP" implementationClass="de.espend.idea.php.drupal.completion.PhpCompletionContributor"/>
       <completion.contributor language="Twig" implementationClass="de.espend.idea.php.drupal.completion.TwigCompletionContributor"/>
