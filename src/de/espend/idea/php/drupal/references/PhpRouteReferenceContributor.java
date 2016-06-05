@@ -6,8 +6,11 @@ import com.intellij.util.ProcessingContext;
 import com.jetbrains.php.lang.PhpLanguage;
 import com.jetbrains.php.lang.psi.elements.*;
 import de.espend.idea.php.drupal.DrupalProjectComponent;
+import fr.adrienbrault.idea.symfony2plugin.Symfony2ProjectComponent;
+import fr.adrienbrault.idea.symfony2plugin.routing.RouteParameterReference;
 import fr.adrienbrault.idea.symfony2plugin.routing.RouteReference;
 import fr.adrienbrault.idea.symfony2plugin.util.MethodMatcher;
+import fr.adrienbrault.idea.symfony2plugin.util.PsiElementUtils;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -77,6 +80,38 @@ public class PhpRouteReferenceContributor extends PsiReferenceContributor {
                     return new PsiReference[0];
                 }
             }
+        );
+
+        psiReferenceRegistrar.registerReferenceProvider(
+            PlatformPatterns.psiElement(StringLiteralExpression.class),
+            new PsiReferenceProvider() {
+                @NotNull
+                @Override
+                public PsiReference[] getReferencesByElement(@NotNull PsiElement psiElement, @NotNull ProcessingContext processingContext) {
+
+                    if(!Symfony2ProjectComponent.isEnabled(psiElement)) {
+                        return new PsiReference[0];
+                    }
+
+                    MethodMatcher.MethodMatchParameter methodMatchParameter = new MethodMatcher.ArrayParameterMatcher(psiElement, 1)
+                        .withSignature(GENERATOR_SIGNATURES)
+                        .match();
+
+                    if(methodMatchParameter == null) {
+                        return new PsiReference[0];
+                    }
+
+                    String routeName = PsiElementUtils.getMethodParameterAt(methodMatchParameter.getMethodReference(), 0);
+                    if(routeName == null) {
+                        return new PsiReference[0];
+                    }
+
+                    return new PsiReference[]{ new RouteParameterReference((StringLiteralExpression) psiElement, routeName) };
+
+                }
+
+            }
+
         );
 
     }
