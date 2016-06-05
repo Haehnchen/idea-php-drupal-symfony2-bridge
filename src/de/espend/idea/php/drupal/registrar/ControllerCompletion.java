@@ -7,15 +7,15 @@ import com.jetbrains.php.PhpIndex;
 import com.jetbrains.php.lang.psi.elements.Method;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 import de.espend.idea.php.drupal.DrupalProjectComponent;
+import de.espend.idea.php.drupal.utils.DrupalUtil;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionProvider;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionRegistrar;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionRegistrarParameter;
 import fr.adrienbrault.idea.symfony2plugin.config.yaml.YamlElementPatternHelper;
+import fr.adrienbrault.idea.symfony2plugin.util.PhpIndexUtil;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * @author Daniel Espendiller <daniel@espendiller.net>
@@ -44,7 +44,19 @@ public class ControllerCompletion implements GotoCompletionRegistrar {
 
             Collection<LookupElement> lookupElements = new ArrayList<>();
 
-            for (PhpClass phpClass : PhpIndex.getInstance(getProject()).getAllSubclasses("Drupal\\Core\\Controller\\ControllerBase")) {
+            Set<String> moduleNames = DrupalUtil.getModuleNames(getProject());
+
+            Set<PhpClass> phpClasses = new HashSet<>(
+                PhpIndex.getInstance(getProject()).getAllSubclasses("Drupal\\Core\\Controller\\ControllerBase")
+            );
+
+            for (String moduleName : moduleNames) {
+                phpClasses.addAll(
+                    PhpIndexUtil.getPhpClassInsideNamespace(getProject(), "\\Drupal\\" + moduleName + "\\Controller")
+                );
+            }
+
+            for (PhpClass phpClass : phpClasses) {
                 for (Method method : phpClass.getOwnMethods()) {
                     if(!method.getAccess().isPublic() || method.isAbstract() || method.getName().startsWith("__")) {
                         continue;
