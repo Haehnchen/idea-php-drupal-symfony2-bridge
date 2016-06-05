@@ -1,7 +1,7 @@
 <idea-plugin version="2" url="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">
   <id>de.espend.idea.php.drupal</id>
   <name>Drupal Symfony Bridge</name>
-  <version>0.2.1</version>
+  <version>0.3.0</version>
   <vendor email="daniel@espendiller.net" url="http://www.espend.de">Daniel Espendiller</vendor>
 
   <description><![CDATA[
@@ -45,6 +45,22 @@
     ]]></description>
 
   <change-notes><![CDATA[
+
+
+<h2>0.3.0</h2>
+<ul>
+    <li>FormStateInterface::setRedirect should provide route completion</li>
+    <li>Add travis test suite <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/15">#15</a>; migrate yaml config index to new yaml plugin <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/14">#14</a>; use Java8 and update minimum api to PhpStorm 2016.1</li>
+    <li>Drop Symfony version string from plugin name</li>
+    <li>Add permission support <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/10">#10</a></li>
+    <li>Add linemaker for class forms in routing defaults key <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/11">#11</a></li>
+    <li>Add linemaker, indexer and completion for entity forms <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/11">#11</a></li>
+    <li>Add Action completion for _controller <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/20">#20</a></li>
+    <li>Add menu name index #13, Add parent menu value key completion for yaml menus <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/13">#13</a></li>
+    <li>Collect module controller on module namespace <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/21">#21</a></li>
+    <li>Provide route parameter completion <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/7">#7</a></li>
+    <li>Completion for non default Symfony route keys <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/12">#12</a></li>
+</ul>
 
 <h2>0.2.1</h2>
 <ul>
