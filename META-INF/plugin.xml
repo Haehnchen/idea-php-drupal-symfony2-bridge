@@ -105,6 +105,7 @@
         <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.registrar.ControllerCompletion"/>
         <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.registrar.YamlMenuGotoCompletion"/>
         <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.registrar.PhpRouteParameterCompletion"/>
+        <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.registrar.YamlRouteKeyCompletion"/>
     </extensions>
 
   <application-components>
