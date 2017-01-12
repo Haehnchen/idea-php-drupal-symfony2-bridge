@@ -110,7 +110,7 @@ public class ContentEntityTypeAnnotation implements PhpAnnotationCompletionProvi
         }
     }
 
-    private static class MyPermissionPsiPolyVariantReferenceBase extends PsiPolyVariantReferenceBase<PsiElement> {
+    public static class MyPermissionPsiPolyVariantReferenceBase extends PsiPolyVariantReferenceBase<PsiElement> {
         @NotNull
         private final PsiElement element;
 

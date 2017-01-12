@@ -130,9 +130,13 @@
         <!-- @Translation -->
         <PhpAnnotationCompletionProvider implementation="de.espend.idea.php.drupal.annotation.TranslationAnnotationReference"/>
 
-        <!-- @ContentEntityTypeAnnotation -->
+        <!-- @ConfigEntityType -->
         <PhpAnnotationCompletionProvider implementation="de.espend.idea.php.drupal.annotation.ContentEntityTypeAnnotation"/>
         <PhpAnnotationReferenceProvider implementation="de.espend.idea.php.drupal.annotation.ContentEntityTypeAnnotation"/>
+
+        <!-- @ConfigEntityType -->
+        <PhpAnnotationCompletionProvider implementation="de.espend.idea.php.drupal.annotation.ConfigEntityTypeAnnotation"/>
+        <PhpAnnotationReferenceProvider implementation="de.espend.idea.php.drupal.annotation.ConfigEntityTypeAnnotation"/>
     </extensions>
 
   <application-components>
