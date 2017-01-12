@@ -126,6 +126,9 @@
 
     <extensions defaultExtensionNs="de.espend.idea.php.annotation">
         <PhpAnnotationGlobalNamespacesLoader implementation="de.espend.idea.php.drupal.annotation.GlobalNamespaceLoader"/>
+
+        <!-- @Translation -->
+        <PhpAnnotationCompletionProvider implementation="de.espend.idea.php.drupal.annotation.TranslationAnnotationReference"/>
     </extensions>
 
   <application-components>
