@@ -8,6 +8,12 @@ PhpStorm / IntelliJ Drupal Symfony Bridge
 
 Provides Symfony components support for Drupal in PhpStorm and IntelliJ
 
+Key         | Value
+----------- | -----------
+Plugin url  | https://plugins.jetbrains.com/plugin/7487
+Id          | de.espend.idea.php.drupal
+Changelog   | [CHANGELOG](CHANGELOG.md)
+
 ### Install
 * [Download plugin](https://plugins.jetbrains.com/plugin/7487) or install directly out of PhpStorm
 * Enabled Symfony Plugin per project (File > Settings > Symfony Plugin )

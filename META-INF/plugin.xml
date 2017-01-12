@@ -1,7 +1,7 @@
 <idea-plugin version="2" url="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">
   <id>de.espend.idea.php.drupal</id>
   <name>Drupal Symfony Bridge</name>
-  <version>0.3.0</version>
+  <version>0.4.0</version>
   <vendor email="daniel@espendiller.net" url="http://www.espend.de">Daniel Espendiller</vendor>
 
   <description><![CDATA[
@@ -46,6 +46,13 @@
 
   <change-notes><![CDATA[
 
+<h2>0.4.0</h2>
+<ul>
+    <li>Support annotations without use import <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/24">#24</a></li>
+    <li>Add completion for @Translation annotation <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/25">#25</a></li>
+    <li>Add support for ContentEntityTypeAnnotation admin_permission and field_ui_base_route <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/23">#23</a></li>
+    <li>Add support for ConfigEntityType admin_permission annotation</li>
+</ul>
 
 <h2>0.3.0</h2>
 <ul>
