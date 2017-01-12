@@ -22,7 +22,7 @@ public class GettextResourceBundle extends ResourceBundle {
     private static final Pattern LINE_PATTERN = Pattern
         .compile("^([\\w_\\[\\]]*)\\s*\\\"(.*)\\\"$");
 
-    private Map<String, Object> resources = new HashMap<String, Object>();;
+    private Map<String, Object> resources = new HashMap<>();
 
     public GettextResourceBundle(InputStream inputStream) {
         init(new LineNumberReader(new InputStreamReader(inputStream)));

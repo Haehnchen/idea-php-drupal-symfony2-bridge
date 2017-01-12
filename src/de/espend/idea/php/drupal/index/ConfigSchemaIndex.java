@@ -40,7 +40,7 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]>
     @Override
     public DataIndexer<String, String[], FileContent> getIndexer() {
         return inputData -> {
-            Map<String, String[]> map = new THashMap<String, String[]>();
+            Map<String, String[]> map = new THashMap<>();
 
             PsiFile psiFile = inputData.getPsiFile();
             if(!Symfony2ProjectComponent.isEnabledForIndex(psiFile.getProject())) {
@@ -58,7 +58,7 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]>
                     continue;
                 }
 
-                Collection<String> mappings = new ArrayList<String>();
+                Collection<String> mappings = new ArrayList<>();
                 YAMLKeyValue mapping = YamlHelper.getYamlKeyValue(yamlKeyValue, "mapping");
                 if(mapping == null) {
                     continue;

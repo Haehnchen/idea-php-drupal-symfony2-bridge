@@ -23,7 +23,7 @@ public class CollectProjectUniqueKeys implements Processor<String> {
     public CollectProjectUniqueKeys(Project project, ID id) {
         this.project = project;
         this.id = id;
-        this.stringSet = new HashSet<String>();
+        this.stringSet = new HashSet<>();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class CollectProjectUniqueKeys implements Processor<String> {
     }
 
     public Set<String> getResult() {
-        Set<String> set = new HashSet<String>();
+        Set<String> set = new HashSet<>();
 
         for (String key : stringSet) {
             Collection fileCollection = FileBasedIndex.getInstance().getContainingFiles(id, key, GlobalSearchScope.allScope(this.project));

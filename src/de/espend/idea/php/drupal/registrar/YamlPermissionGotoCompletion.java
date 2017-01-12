@@ -81,7 +81,7 @@ public class YamlPermissionGotoCompletion implements GotoCompletionRegistrar {
                 continue;
             }
 
-            ContainerUtil.addIfNotNull(targets, YAMLUtil.getQualifiedKeyInFile((YAMLFile) file, text));                ;
+            ContainerUtil.addIfNotNull(targets, YAMLUtil.getQualifiedKeyInFile((YAMLFile) file, text));
         }
 
         return targets;

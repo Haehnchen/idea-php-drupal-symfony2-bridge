@@ -26,7 +26,7 @@ public class PhpGoToDeclarationHandler implements GotoDeclarationHandler {
             return new PsiElement[0];
         }
 
-        List<PsiElement> psiElementList = new ArrayList<PsiElement>();
+        List<PsiElement> psiElementList = new ArrayList<>();
 
         PsiElement context = psiElement.getContext();
         if(context instanceof StringLiteralExpression && DrupalPattern.isAfterArrayKey(psiElement, "route_name")) {

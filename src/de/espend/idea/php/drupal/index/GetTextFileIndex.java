@@ -1,6 +1,5 @@
 package de.espend.idea.php.drupal.index;
 
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.*;
 import com.intellij.util.io.DataExternalizer;
 import com.intellij.util.io.EnumeratorStringDescriptor;
@@ -29,25 +28,21 @@ public class GetTextFileIndex extends FileBasedIndexExtension<String, Void> {
     @NotNull
     @Override
     public DataIndexer<String, Void, FileContent> getIndexer() {
-        return new DataIndexer<String, Void, FileContent>() {
-            @NotNull
-            @Override
-            public Map<String, Void> map(FileContent fileContent) {
-                Map<String, Void> msgId = new HashMap<String, Void>();
+        return fileContent -> {
+            Map<String, Void> msgId = new HashMap<>();
 
-                try {
-                    GettextResourceBundle gettextResourceBundle = new GettextResourceBundle(fileContent.getFile().getInputStream());
-                    Enumeration<String> tests = gettextResourceBundle.getKeys();
-                    for(String test: new HashSet<String>(Collections.list(tests))) {
-                        if(StringUtils.isNotBlank(test)) {
-                            msgId.put(test, null);
-                        }
+            try {
+                GettextResourceBundle gettextResourceBundle = new GettextResourceBundle(fileContent.getFile().getInputStream());
+                Enumeration<String> tests = gettextResourceBundle.getKeys();
+                for(String test: new HashSet<>(Collections.list(tests))) {
+                    if(StringUtils.isNotBlank(test)) {
+                        msgId.put(test, null);
                     }
-                } catch (IOException e) {
-                    return msgId;
                 }
+            } catch (IOException e) {
                 return msgId;
             }
+            return msgId;
         };
     }
 
@@ -63,12 +58,7 @@ public class GetTextFileIndex extends FileBasedIndexExtension<String, Void> {
 
     @Override
     public FileBasedIndex.InputFilter getInputFilter() {
-        return new FileBasedIndex.InputFilter() {
-            @Override
-            public boolean acceptInput(VirtualFile file) {
-                return "po".equals(file.getExtension());
-            }
-        };
+        return file -> "po".equals(file.getExtension());
     }
 
     @Override
