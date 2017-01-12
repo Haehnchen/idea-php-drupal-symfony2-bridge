@@ -124,6 +124,10 @@
         <GotoCompletionRegistrar implementation="de.espend.idea.php.drupal.registrar.YamlRouteKeyCompletion"/>
     </extensions>
 
+    <extensions defaultExtensionNs="de.espend.idea.php.annotation">
+        <PhpAnnotationGlobalNamespacesLoader implementation="de.espend.idea.php.drupal.annotation.GlobalNamespaceLoader"/>
+    </extensions>
+
   <application-components>
     <!-- Add your application components here -->
   </application-components>
@@ -141,5 +145,6 @@
     <depends>com.jetbrains.twig</depends>
     <depends>org.jetbrains.plugins.yaml</depends>
     <depends>fr.adrienbrault.idea.symfony2plugin</depends>
+    <depends>de.espend.idea.php.annotation</depends>
 
 </idea-plugin>
