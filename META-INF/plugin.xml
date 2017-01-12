@@ -17,7 +17,7 @@
 <h2>Install</h2>
 <ul>
     <li>Enabled Symfony Plugin per project (File > Settings > Symfony2 Plugin)</li>
-    <li>Install [Php Annotation](http://plugins.jetbrains.com/plugin/7320) plugin to enjoy all the annotation stuff</li>
+    <li>Install <a href="https://plugins.jetbrains.com/plugin/7320">Php Annotation</a> plugin to enjoy all the annotation stuff</li>
     <li>Plugin needs a valid PhpStorm indexer, use "File > Invalidate Caches / Restart" if something crazy is going on</li>
 </ul>
 
