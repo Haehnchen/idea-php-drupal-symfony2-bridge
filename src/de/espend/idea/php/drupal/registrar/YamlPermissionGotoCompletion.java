@@ -1,6 +1,7 @@
 package de.espend.idea.php.drupal.registrar;
 
 import com.intellij.codeInsight.lookup.LookupElement;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -59,25 +60,30 @@ public class YamlPermissionGotoCompletion implements GotoCompletionRegistrar {
                 return Collections.emptyList();
             }
 
-            Collection<PsiElement> targets = new ArrayList<>();
+            return getPermissionPsiElements(getProject(), text);
+        }
+    }
 
-            Collection<VirtualFile> virtualFiles = new ArrayList<>();
+    @NotNull
+    public static Collection<PsiElement> getPermissionPsiElements(@NotNull Project project, @NotNull String text) {
+        Collection<PsiElement> targets = new ArrayList<>();
 
-            FileBasedIndex.getInstance().getFilesWithKey(PermissionIndex.KEY, new HashSet<>(Collections.singletonList(text)), virtualFile -> {
-                virtualFiles.add(virtualFile);
-                return true;
-            }, GlobalSearchScope.allScope(getProject()));
+        Collection<VirtualFile> virtualFiles = new ArrayList<>();
 
-            for (VirtualFile virtualFile : virtualFiles) {
-                PsiFile file = PsiManager.getInstance(getProject()).findFile(virtualFile);
-                if(!(file instanceof YAMLFile)) {
-                    continue;
-                }
+        FileBasedIndex.getInstance().getFilesWithKey(PermissionIndex.KEY, new HashSet<>(Collections.singletonList(text)), virtualFile -> {
+            virtualFiles.add(virtualFile);
+            return true;
+        }, GlobalSearchScope.allScope(project));
 
-                ContainerUtil.addIfNotNull(targets, YAMLUtil.getQualifiedKeyInFile((YAMLFile) file, text));                ;
+        for (VirtualFile virtualFile : virtualFiles) {
+            PsiFile file = PsiManager.getInstance(project).findFile(virtualFile);
+            if(!(file instanceof YAMLFile)) {
+                continue;
             }
 
-            return targets;
+            ContainerUtil.addIfNotNull(targets, YAMLUtil.getQualifiedKeyInFile((YAMLFile) file, text));                ;
         }
+
+        return targets;
     }
 }
