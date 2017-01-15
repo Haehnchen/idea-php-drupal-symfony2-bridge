@@ -144,6 +144,9 @@
         <!-- @ConfigEntityType -->
         <PhpAnnotationCompletionProvider implementation="de.espend.idea.php.drupal.annotation.ConfigEntityTypeAnnotation"/>
         <PhpAnnotationReferenceProvider implementation="de.espend.idea.php.drupal.annotation.ConfigEntityTypeAnnotation"/>
+
+        <!-- Virtual properties for annotations -->
+        <PhpAnnotationVirtualProperties implementation="de.espend.idea.php.drupal.annotation.DrupalVirtualProperties"/>
     </extensions>
 
   <application-components>
