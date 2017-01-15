@@ -1,3 +1,6 @@
+## 0.4.1
+* Add some static virtual annotation property classes [#23](https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/23)
+
 ## 0.4.0
 * Support annotations without use import [#24](https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/24)
 * Add completion for @Translation annotation [#25](https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/25)
