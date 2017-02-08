@@ -9,14 +9,14 @@
 <h1>Drupal Symfony Bridge</h1>
 
 <br>
-<a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">GitHub</a> | <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues">Issues</a> | <a href="http://symfony2-plugin.espend.de/">Documentation (Symfony2 Plugin)</a>
+<a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">GitHub</a> | <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues">Issues</a> | <a href="http://symfony2-plugin.espend.de/">Documentation (Symfony Plugin)</a>
 <br>
 
 <p>Integrates support for Symfony components in Drupal8 with <a href="http://plugins.jetbrains.com/plugin/7219">Symfony Plugin</a></p>
 
 <h2>Install</h2>
 <ul>
-    <li>Enabled Symfony Plugin per project (File > Settings > Symfony2 Plugin)</li>
+    <li>Enabled Symfony Plugin per project (File > Settings > Symfony Plugin)</li>
     <li>Install <a href="https://plugins.jetbrains.com/plugin/7320">Php Annotation</a> plugin to enjoy all the annotation stuff</li>
     <li>Plugin needs a valid PhpStorm indexer, use "File > Invalidate Caches / Restart" if something crazy is going on</li>
 </ul>
