@@ -2,7 +2,6 @@ package de.espend.idea.php.drupal.tests.index;
 
 import de.espend.idea.php.drupal.index.ConfigSchemaIndex;
 import de.espend.idea.php.drupal.tests.DrupalLightCodeInsightFixtureTestCase;
-import org.apache.commons.lang.ArrayUtils;
 
 import java.io.File;
 
@@ -24,7 +23,7 @@ public class ConfigSchemaIndexTest extends DrupalLightCodeInsightFixtureTestCase
         assertIndexContains(ConfigSchemaIndex.KEY, "action.settings");
 
         assertIndexContainsKeyWithValue(ConfigSchemaIndex.KEY, "action.settings", value ->
-            value != null && ArrayUtils.contains(value, "recursion_limit")
+            value.contains("recursion_limit")
         );
     }
 }

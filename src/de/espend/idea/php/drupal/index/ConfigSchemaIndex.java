@@ -7,7 +7,7 @@ import com.intellij.util.io.DataExternalizer;
 import com.intellij.util.io.EnumeratorStringDescriptor;
 import com.intellij.util.io.KeyDescriptor;
 import fr.adrienbrault.idea.symfony2plugin.Symfony2ProjectComponent;
-import fr.adrienbrault.idea.symfony2plugin.stubs.indexes.ServicesDefinitionStubIndex;
+import fr.adrienbrault.idea.symfony2plugin.stubs.indexes.externalizer.StringSetDataExternalizer;
 import fr.adrienbrault.idea.symfony2plugin.util.PsiElementUtils;
 import fr.adrienbrault.idea.symfony2plugin.util.yaml.YamlHelper;
 import gnu.trove.THashMap;
@@ -17,30 +17,30 @@ import org.jetbrains.yaml.YAMLFileType;
 import org.jetbrains.yaml.psi.YAMLFile;
 import org.jetbrains.yaml.psi.YAMLKeyValue;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * @author Daniel Espendiller <daniel@espendiller.net>
  */
-public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]> {
+public class ConfigSchemaIndex extends FileBasedIndexExtension<String, Set<String>> {
 
-    public static final ID<String, String[]> KEY = ID.create("de.espend.idea.php.drupal.config_schema");
+    public static final ID<String, Set<String>> KEY = ID.create("de.espend.idea.php.drupal.config_schema");
+    private static final StringSetDataExternalizer EXTERNALIZER = new StringSetDataExternalizer();
     private final KeyDescriptor<String> myKeyDescriptor = new EnumeratorStringDescriptor();
 
     @NotNull
     @Override
-    public ID<String, String[]> getName() {
+    public ID<String, Set<String>> getName() {
         return KEY;
     }
 
     @NotNull
     @Override
-    public DataIndexer<String, String[], FileContent> getIndexer() {
+    public DataIndexer<String, Set<String>, FileContent> getIndexer() {
         return inputData -> {
-            Map<String, String[]> map = new THashMap<>();
+            Map<String, Set<String>> map = new THashMap<>();
 
             PsiFile psiFile = inputData.getPsiFile();
             if(!Symfony2ProjectComponent.isEnabledForIndex(psiFile.getProject())) {
@@ -58,7 +58,7 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]>
                     continue;
                 }
 
-                Collection<String> mappings = new ArrayList<>();
+                Set<String> mappings = new HashSet<>();
                 YAMLKeyValue mapping = YamlHelper.getYamlKeyValue(yamlKeyValue, "mapping");
                 if(mapping == null) {
                     continue;
@@ -69,7 +69,7 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]>
                     mappings.addAll(keySet);
                 }
 
-                map.put(key, mappings.toArray(new String[mappings.size()]));
+                map.put(key, mappings);
             }
 
             return map;
@@ -85,8 +85,8 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, String[]>
 
     @NotNull
     @Override
-    public DataExternalizer<String[]> getValueExternalizer() {
-        return new ServicesDefinitionStubIndex.MySetDataExternalizer();
+    public DataExternalizer<Set<String>> getValueExternalizer() {
+        return EXTERNALIZER;
     }
 
     @NotNull
