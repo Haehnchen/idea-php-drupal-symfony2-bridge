@@ -1,3 +1,6 @@
+## 0.4.2
+* Fix api contract violation exception for config index [#27](https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/27)
+
 ## 0.4.1
 * Add some static virtual annotation property classes [#23](https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/23)
 
