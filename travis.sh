@@ -1,10 +1,12 @@
 #!/bin/bash
 
-ideaVersion="2016.3.1"
-if [ "$PHPSTORM_ENV" == "2016.3.1" ]; then
-    ideaVersion="2016.3.3"
-elif [ "$PHPSTORM_ENV" == "2016.3.2" ]; then
-    ideaVersion="2016.3.3"
+ideaVersion="2017.1"
+if [ "$PHPSTORM_ENV" == "2017.1" ]; then
+    ideaVersion="2017.1.4"
+elif [ "$PHPSTORM_ENV" == "2017.2" ]; then
+    ideaVersion="2017.2"
+elif [ "$PHPSTORM_ENV" == "2017.2.4" ]; then
+    ideaVersion="2017.2.4"
 elif [ "$PHPSTORM_ENV" == "eap" ]; then
     ideaVersion="163.5644.15"
 fi
@@ -56,32 +58,51 @@ if [ -d ./plugins ]; then
   echo "created plugin dir"  
 fi
 
-if [ "$PHPSTORM_ENV" == "2016.3.1" ]; then
+if [ "$PHPSTORM_ENV" == "2017.1" ]; then
 
     #php
-    download "http://phpstorm.espend.de/files/proxy/phpstorm-2016.3.1-php.zip"
-    unzip -qo $travisCache/phpstorm-2016.3.1-php.zip -d ./plugins
+    download "http://phpstorm.espend.de/files/proxy/phpstorm-2017.1-php.zip"
+    unzip -qo $travisCache/phpstorm-2017.1-php.zip -d ./plugins
 
     #twig
-    download "http://phpstorm.espend.de/files/proxy/phpstorm-2016.3.1-twig.zip"
-    unzip -qo $travisCache/phpstorm-2016.3.1-twig.zip -d ./plugins
+    download "http://phpstorm.espend.de/files/proxy/phpstorm-2017.1-twig.zip"
+    unzip -qo $travisCache/phpstorm-2017.1-twig.zip -d ./plugins
 
-elif [ "$PHPSTORM_ENV" == "2016.3.2" ]; then
+elif [ "$PHPSTORM_ENV" == "2017.2" ]; then
 
     #php
-    download "http://phpstorm.espend.de/files/proxy/phpstorm-2016.3.2-php.zip"
-    unzip -qo $travisCache/phpstorm-2016.3.2-php.zip -d ./plugins
+    download "http://phpstorm.espend.de/files/proxy/phpstorm-2017.2-php.zip"
+    unzip -qo $travisCache/phpstorm-2017.2-php.zip -d ./plugins
 
     #twig
-    download "http://phpstorm.espend.de/files/proxy/phpstorm-2016.3.2-twig.zip"
-    unzip -qo $travisCache/phpstorm-2016.3.2-twig.zip -d ./plugins
+    download "http://phpstorm.espend.de/files/proxy/phpstorm-2017.2-twig.zip"
+    unzip -qo $travisCache/phpstorm-2017.2-twig.zip -d ./plugins
 
+
+elif [ "$PHPSTORM_ENV" == "2017.2.4" ]; then
+
+    #php
+    download "http://phpstorm.espend.de/files/proxy/phpstorm-2017.2.4-php.zip"
+    unzip -qo $travisCache/phpstorm-2017.2.4-php.zip -d ./plugins
+
+    #twig
+    download "http://phpstorm.espend.de/files/proxy/phpstorm-2017.2.4-twig.zip"
+    unzip -qo $travisCache/phpstorm-2017.2.4-twig.zip -d ./plugins
 
 elif [ "$PHPSTORM_ENV" == "eap" ]; then
 
     #php
-    download "https://plugins.jetbrains.com/files/6610/28124/php-163.3512.10.zip"
-    unzip -qo $travisCache/php-163.3512.10.zip -d ./plugins
+    download "https://plugins.jetbrains.com/files/6610/28510/php-163.4830.18.zip"
+    unzip -qo $travisCache/php-163.4830.18.zip -d ./plugins
+
+    #twig
+    download "https://plugins.jetbrains.com/files/7303/28516/twig-163.4830.18.zip"
+    unzip -qo $travisCache/twig-163.4830.18.zip -d ./plugins
+
+    # TODO: extract latest builds for plugins from eap site they are not public
+    # https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program
+    # echo "No configuration for PhpStorm: $PHPSTORM_ENV"
+    # exit 1
 
 else
     echo "Unknown PHPSTORM_ENV value: $PHPSTORM_ENV"
@@ -89,10 +110,11 @@ else
 fi
 
 rm -f $travisCache/symfony2-plugin.jar
-download "https://plugins.jetbrains.com/files/7219/31676/symfony2-plugin.jar"
+download "https://download.plugins.jetbrains.com/7219/38822/symfony2-plugin.jar"
 cp $travisCache/symfony2-plugin.jar ./plugins
 
-download "https://plugins.jetbrains.com/files/7320/31734/php-annotation.jar"
+rm -f $travisCache/php-annotation.jar
+download "http://phpstorm.espend.de/files/proxy/plugins/php-annotation.jar"
 cp $travisCache/php-annotation.jar ./plugins
 
 # Run the tests
