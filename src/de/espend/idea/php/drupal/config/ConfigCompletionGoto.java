@@ -36,7 +36,7 @@ import java.util.HashSet;
  */
 public class ConfigCompletionGoto implements GotoCompletionRegistrar {
 
-    private static MethodMatcher.CallToSignature[] CONFIG = new MethodMatcher.CallToSignature[] {
+    final private static MethodMatcher.CallToSignature[] CONFIG = new MethodMatcher.CallToSignature[] {
         new MethodMatcher.CallToSignature("\\Drupal\\Core\\Config\\ConfigFactory", "get"),
     };
 

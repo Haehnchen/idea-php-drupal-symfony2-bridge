@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class PhpRouteReferenceContributor extends PsiReferenceContributor {
 
-    public static MethodMatcher.CallToSignature[] GENERATOR_SIGNATURES = new MethodMatcher.CallToSignature[] {
+    final private static MethodMatcher.CallToSignature[] GENERATOR_SIGNATURES = new MethodMatcher.CallToSignature[] {
         new MethodMatcher.CallToSignature("\\Drupal\\Core\\Routing\\UrlGeneratorInterface", "getPathFromRoute"), // <- <@TODO: remove: pre Drupal8 beta
         new MethodMatcher.CallToSignature("\\Drupal\\Core\\Routing\\UrlGeneratorInterface", "generateFromRoute"), // <- <@TODO: remove: pre Drupal8 beta
         new MethodMatcher.CallToSignature("\\Drupal\\Core\\Routing\\UrlGenerator", "getPathFromRoute"),
@@ -32,7 +32,7 @@ public class PhpRouteReferenceContributor extends PsiReferenceContributor {
     };
 
     @Override
-    public void registerReferenceProviders(PsiReferenceRegistrar psiReferenceRegistrar) {
+    public void registerReferenceProviders(@NotNull PsiReferenceRegistrar psiReferenceRegistrar) {
 
         psiReferenceRegistrar.registerReferenceProvider(
             PlatformPatterns.psiElement(StringLiteralExpression.class).withLanguage(PhpLanguage.INSTANCE),

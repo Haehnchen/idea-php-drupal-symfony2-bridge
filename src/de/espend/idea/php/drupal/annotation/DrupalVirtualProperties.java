@@ -8,6 +8,7 @@ import de.espend.idea.php.annotation.extension.parameter.AnnotationVirtualProper
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,8 +16,8 @@ import java.util.Map;
  * @author Daniel Espendiller <daniel@espendiller.net>
  */
 public class DrupalVirtualProperties implements PhpAnnotationVirtualProperties {
-    private static Map<String, Map<String, AnnotationPropertyEnum>> ITEMS = new HashMap<String, Map<String, AnnotationPropertyEnum>>() {{
-        put("Drupal\\Core\\Entity\\Annotation\\ContentEntityType", new HashMap<String, AnnotationPropertyEnum>() {{
+    final private static Map<String, Map<String, AnnotationPropertyEnum>> ITEMS = Collections.unmodifiableMap(new HashMap<String, Map<String, AnnotationPropertyEnum>>() {{
+        put("Drupal\\Core\\Entity\\Annotation\\ContentEntityType", Collections.unmodifiableMap(new HashMap<String, AnnotationPropertyEnum>() {{
             put("id", AnnotationPropertyEnum.STRING);
             put("label", AnnotationPropertyEnum.STRING);
             put("handlers", AnnotationPropertyEnum.ARRAY);
@@ -29,9 +30,9 @@ public class DrupalVirtualProperties implements PhpAnnotationVirtualProperties {
             put("links", AnnotationPropertyEnum.ARRAY);
             put("field_ui_base_route", AnnotationPropertyEnum.STRING);
             put("common_reference_target", AnnotationPropertyEnum.STRING);
-        }});
+        }}));
 
-        put("Drupal\\Core\\Entity\\Annotation\\ConfigEntityType", new HashMap<String, AnnotationPropertyEnum>() {{
+        put("Drupal\\Core\\Entity\\Annotation\\ConfigEntityType", Collections.unmodifiableMap(new HashMap<String, AnnotationPropertyEnum>() {{
             put("id", AnnotationPropertyEnum.STRING);
             put("label", AnnotationPropertyEnum.STRING);
             put("handlers", AnnotationPropertyEnum.STRING);
@@ -39,14 +40,14 @@ public class DrupalVirtualProperties implements PhpAnnotationVirtualProperties {
             put("admin_permission", AnnotationPropertyEnum.STRING);
             put("list_cache_tags", AnnotationPropertyEnum.ARRAY);
             put("config_export", AnnotationPropertyEnum.ARRAY);
-        }});
+        }}));
 
-        put("Drupal\\Component\\Annotation\\Plugin", new HashMap<String, AnnotationPropertyEnum>() {{
+        put("Drupal\\Component\\Annotation\\Plugin", Collections.unmodifiableMap(new HashMap<String, AnnotationPropertyEnum>() {{
             put("id", AnnotationPropertyEnum.STRING);
             put("title", AnnotationPropertyEnum.STRING);
             put("description", AnnotationPropertyEnum.STRING);
-        }});
-    }};
+        }}));
+    }});
 
     @Override
     public void addCompletions(@NotNull AnnotationVirtualPropertyCompletionParameter virtualPropertyParameter, @NotNull AnnotationCompletionProviderParameter parameter) {
