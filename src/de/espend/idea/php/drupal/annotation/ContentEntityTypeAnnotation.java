@@ -106,7 +106,12 @@ public class ContentEntityTypeAnnotation implements PhpAnnotationCompletionProvi
         @NotNull
         @Override
         public ResolveResult[] multiResolve(boolean b) {
-            return PsiElementResolveResult.createResults(RouteHelper.getRouteNameTarget(element.getProject(), contents));
+            PsiElement routeNameTarget = RouteHelper.getRouteNameTarget(element.getProject(), contents);
+            if(routeNameTarget == null) {
+                return new ResolveResult[0];
+            }
+
+            return PsiElementResolveResult.createResults(routeNameTarget);
         }
     }
 
