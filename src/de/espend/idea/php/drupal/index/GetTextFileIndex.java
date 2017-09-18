@@ -46,16 +46,19 @@ public class GetTextFileIndex extends FileBasedIndexExtension<String, Void> {
         };
     }
 
+    @NotNull
     @Override
     public KeyDescriptor<String> getKeyDescriptor() {
         return this.myKeyDescriptor;
     }
 
+    @NotNull
     @Override
     public DataExternalizer<Void> getValueExternalizer() {
         return ScalarIndexExtension.VOID_DATA_EXTERNALIZER;
     }
 
+    @NotNull
     @Override
     public FileBasedIndex.InputFilter getInputFilter() {
         return file -> "po".equals(file.getExtension());

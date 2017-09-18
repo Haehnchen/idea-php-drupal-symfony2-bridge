@@ -121,10 +121,10 @@ public class ConfigEntityTypeAnnotationIndex extends FileBasedIndexExtension<Str
     }
 
     private class MyPsiRecursiveElementWalkingVisitor extends PsiRecursiveElementVisitor {
-
+        @NotNull
         private final Map<String, String> map;
 
-        public MyPsiRecursiveElementWalkingVisitor(Map<String, String> map) {
+        private MyPsiRecursiveElementWalkingVisitor(@NotNull Map<String, String> map) {
             this.map = map;
         }
 
@@ -158,22 +158,6 @@ public class ConfigEntityTypeAnnotationIndex extends FileBasedIndexExtension<Str
             if (matcher.find()) {
                 map.put(matcher.group(1), StringUtils.stripStart(((PhpClass) phpClass).getFQN(), "\\"));
             }
-
-            /*
-            PhpPsiElement phpDocAttrList = ((PhpDocTag) element).getFirstPsiChild();
-            for (PsiElement psiElement : phpDocAttrList.getChildren()) {
-                if(!PlatformPatterns.psiElement(PhpDocTokenTypes.DOC_IDENTIFIER).accepts(psiElement)) {
-                    continue;
-                }
-
-                String text = psiElement.getText();
-                if(!"id".equals(text)) {
-                    continue;
-                }
-
-                System.out.println(text);
-            }
-            */
 
             super.visitElement(element);
         }
