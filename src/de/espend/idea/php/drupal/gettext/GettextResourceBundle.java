@@ -3,6 +3,7 @@ package de.espend.idea.php.drupal.gettext;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.util.*;
@@ -131,6 +132,7 @@ public class GettextResourceBundle extends ResourceBundle {
     *
     * @see java.util.ResourceBundle#getKeys()
     */
+    @NotNull
     @Override
     public Enumeration<String> getKeys() {
         return Collections.enumeration(resources.keySet());
@@ -142,7 +144,7 @@ public class GettextResourceBundle extends ResourceBundle {
     * @see java.util.ResourceBundle#handleGetObject(java.lang.String)
     */
     @Override
-    protected Object handleGetObject(String key) {
+    protected Object handleGetObject(@NotNull String key) {
         return resources.get(key);
     }
 

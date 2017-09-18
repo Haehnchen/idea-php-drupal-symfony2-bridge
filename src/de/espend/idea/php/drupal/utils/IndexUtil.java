@@ -11,7 +11,6 @@ import com.intellij.psi.PsiManager;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.indexing.FileBasedIndex;
-import com.intellij.util.indexing.FileBasedIndexImpl;
 import com.intellij.util.indexing.FileContent;
 import com.intellij.util.indexing.ID;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
@@ -37,13 +36,9 @@ public class IndexUtil {
 
     @NotNull
     public static Collection<PhpClass> getFormClassForId(@NotNull Project project, @NotNull String id)  {
-
-        SymfonyProcessors.CollectProjectUniqueKeys keys = new SymfonyProcessors.CollectProjectUniqueKeys(project, ConfigEntityTypeAnnotationIndex.KEY);
-        FileBasedIndexImpl.getInstance().processAllKeys(ConfigEntityTypeAnnotationIndex.KEY, keys, project);
-
         Collection<PhpClass> phpClasses = new ArrayList<>();
 
-        for (String key : keys.getResult()) {
+        for (String key : SymfonyProcessors.createResult(project, ConfigEntityTypeAnnotationIndex.KEY)) {
             if(!id.equals(key)) {
                 continue;
             }
@@ -83,10 +78,7 @@ public class IndexUtil {
     public static Collection<LookupElement> getIndexedKeyLookup(@NotNull Project project, @NotNull ID<String, ?> var1) {
         Collection<LookupElement> lookupElements = new ArrayList<>();
 
-        SymfonyProcessors.CollectProjectUniqueKeys projectUniqueKeys = new SymfonyProcessors.CollectProjectUniqueKeys(project, var1);
-        FileBasedIndex.getInstance().processAllKeys(var1, projectUniqueKeys, project);
-
-        lookupElements.addAll(projectUniqueKeys.getResult().stream().map(
+        lookupElements.addAll(SymfonyProcessors.createResult(project, var1).stream().map(
             s -> LookupElementBuilder.create(s).withIcon(DrupalIcons.DRUPAL)).collect(Collectors.toList())
         );
 

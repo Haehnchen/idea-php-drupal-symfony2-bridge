@@ -9,16 +9,15 @@ import com.intellij.psi.PsiManager;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.indexing.FileBasedIndex;
-import com.intellij.util.indexing.FileBasedIndexImpl;
 import com.jetbrains.php.lang.PhpLanguage;
 import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
 import de.espend.idea.php.drupal.DrupalProjectComponent;
-import de.espend.idea.php.drupal.index.CollectProjectUniqueKeys;
 import de.espend.idea.php.drupal.index.ConfigSchemaIndex;
 import fr.adrienbrault.idea.symfony2plugin.Symfony2Icons;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionProvider;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionRegistrar;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionRegistrarParameter;
+import fr.adrienbrault.idea.symfony2plugin.stubs.SymfonyProcessors;
 import fr.adrienbrault.idea.symfony2plugin.util.MethodMatcher;
 import fr.adrienbrault.idea.symfony2plugin.util.PsiElementUtils;
 import org.apache.commons.lang.StringUtils;
@@ -66,19 +65,16 @@ public class ConfigCompletionGoto implements GotoCompletionRegistrar {
 
     private static class FormReferenceCompletionProvider extends GotoCompletionProvider {
 
-        public FormReferenceCompletionProvider(PsiElement element) {
+        private FormReferenceCompletionProvider(PsiElement element) {
             super(element);
         }
 
         @NotNull
         @Override
         public Collection<LookupElement> getLookupElements() {
-
-            CollectProjectUniqueKeys ymlProjectProcessor = new CollectProjectUniqueKeys(getProject(), ConfigSchemaIndex.KEY);
-            FileBasedIndex.getInstance().processAllKeys(ConfigSchemaIndex.KEY, ymlProjectProcessor, getProject());
-
             Collection<LookupElement> lookupElements = new ArrayList<>();
-            for(String config: ymlProjectProcessor.getResult()) {
+
+            for(String config: SymfonyProcessors.createResult(getProject(), ConfigSchemaIndex.KEY)) {
                 lookupElements.add(LookupElementBuilder.create(config).withIcon(Symfony2Icons.CONFIG_VALUE));
             }
 
@@ -100,7 +96,7 @@ public class ConfigCompletionGoto implements GotoCompletionRegistrar {
             }
 
             final Collection<PsiElement> psiElements = new ArrayList<>();
-            FileBasedIndexImpl.getInstance().getFilesWithKey(ConfigSchemaIndex.KEY, new HashSet<>(Collections.singletonList(contents)), virtualFile -> {
+            FileBasedIndex.getInstance().getFilesWithKey(ConfigSchemaIndex.KEY, new HashSet<>(Collections.singletonList(contents)), virtualFile -> {
 
                 PsiFile psiFile = PsiManager.getInstance(getProject()).findFile(virtualFile);
                 if(psiFile == null) {
@@ -112,7 +108,7 @@ public class ConfigCompletionGoto implements GotoCompletionRegistrar {
                     return true;
                 }
 
-                for(YAMLKeyValue yamlKeyValue: PsiTreeUtil.getChildrenOfType(yamlDocument, YAMLKeyValue.class)) {
+                for(YAMLKeyValue yamlKeyValue: PsiTreeUtil.getChildrenOfTypeAsList(yamlDocument, YAMLKeyValue.class)) {
                     String keyText = PsiElementUtils.trimQuote(yamlKeyValue.getKeyText());
                     if(StringUtils.isNotBlank(keyText) && keyText.equals(contents)) {
                         psiElements.add(yamlKeyValue);
