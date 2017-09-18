@@ -5,6 +5,7 @@ import com.intellij.util.indexing.*;
 import com.intellij.util.io.DataExternalizer;
 import com.intellij.util.io.EnumeratorStringDescriptor;
 import com.intellij.util.io.KeyDescriptor;
+import com.intellij.util.io.VoidDataExternalizer;
 import fr.adrienbrault.idea.symfony2plugin.util.yaml.YamlHelper;
 import gnu.trove.THashMap;
 import org.apache.commons.lang.StringUtils;
@@ -64,7 +65,7 @@ public class MenuIndex extends FileBasedIndexExtension<String, Void> {
 
     @NotNull
     public DataExternalizer<Void> getValueExternalizer() {
-        return ScalarIndexExtension.VOID_DATA_EXTERNALIZER;
+        return VoidDataExternalizer.INSTANCE;
     }
 
     @NotNull

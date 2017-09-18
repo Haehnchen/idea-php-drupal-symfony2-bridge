@@ -47,7 +47,7 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, Set<Strin
                 return map;
             }
 
-            if(!(psiFile instanceof YAMLFile) || !isValidForIndex(inputData, psiFile)) {
+            if(!(psiFile instanceof YAMLFile) || !isValidForIndex(psiFile)) {
                 return map;
             }
 
@@ -106,14 +106,11 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, Set<Strin
         return 2;
     }
 
-    public static boolean isValidForIndex(FileContent inputData, PsiFile psiFile) {
+    private static boolean isValidForIndex(@NotNull PsiFile psiFile) {
 
         String fileName = psiFile.getName();
-        if(fileName.startsWith(".") || !fileName.endsWith(".schema.yml")) {
-            return false;
-        }
 
-        return true;
+        return !(fileName.startsWith(".") || !fileName.endsWith(".schema.yml"));
     }
 }
 
