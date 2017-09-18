@@ -3,6 +3,7 @@ package de.espend.idea.php.drupal.utils;
 import com.intellij.codeInsight.lookup.LookupElement;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -11,6 +12,7 @@ import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.FileBasedIndexImpl;
+import com.intellij.util.indexing.FileContent;
 import com.intellij.util.indexing.ID;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 import de.espend.idea.php.drupal.DrupalIcons;
@@ -89,5 +91,26 @@ public class IndexUtil {
         );
 
         return lookupElements;
+    }
+
+    public static boolean isValidForIndex(@NotNull FileContent inputData, @NotNull PsiFile psiFile) {
+
+        String fileName = psiFile.getName();
+        if(fileName.startsWith(".") || fileName.endsWith("Test")) {
+            return false;
+        }
+
+        VirtualFile baseDir = inputData.getProject().getBaseDir();
+        if(baseDir == null) {
+            return false;
+        }
+
+        // is Test file in path name
+        String relativePath = VfsUtil.getRelativePath(inputData.getFile(), baseDir, '/');
+        if(relativePath != null && (relativePath.contains("/Test/") || relativePath.contains("/Fixtures/"))) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -13,7 +13,7 @@ import com.jetbrains.php.lang.psi.PhpFile;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 import com.jetbrains.php.lang.psi.elements.PhpPsiElement;
 import com.jetbrains.php.lang.psi.stubs.indexes.PhpConstantNameIndex;
-import fr.adrienbrault.idea.symfony2plugin.stubs.indexes.RoutesStubIndex;
+import de.espend.idea.php.drupal.utils.IndexUtil;
 import gnu.trove.THashMap;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
@@ -44,7 +44,7 @@ public class ConfigEntityTypeAnnotationIndex extends FileBasedIndexExtension<Str
                 return map;
             }
 
-            if(!RoutesStubIndex.isValidForIndex(inputData, psiFile)) {
+            if(!IndexUtil.isValidForIndex(inputData, psiFile)) {
                 return map;
             }
 
