@@ -1,7 +1,7 @@
 <idea-plugin version="2" url="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">
   <id>de.espend.idea.php.drupal</id>
   <name>Drupal Symfony Bridge</name>
-  <version>0.4.2</version>
+  <version>0.5</version>
   <vendor email="daniel@espendiller.net" url="http://www.espend.de">Daniel Espendiller</vendor>
 
   <description><![CDATA[
@@ -9,7 +9,7 @@
 <h1>Drupal Symfony Bridge</h1>
 
 <br>
-<a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">GitHub</a> | <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues">Issues</a> | <a href="http://symfony2-plugin.espend.de/">Documentation (Symfony Plugin)</a>
+<a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">GitHub</a> | <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues">Issues</a> | <a href="http://symfony2-plugin.espend.de/">Documentation (Symfony Plugin)</a>  | <a href="https://www.paypal.me/DanielEspendiller">Donate</a>
 <br>
 
 <p>Integrates support for Symfony components in Drupal8 with <a href="http://plugins.jetbrains.com/plugin/7219">Symfony Plugin</a></p>
@@ -45,61 +45,13 @@
     ]]></description>
 
   <change-notes><![CDATA[
-
-<h2>0.4.2</h2>
 <ul>
-    <li>Fix api contract violation exception for config index <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/27">#27</a></li>
+    <li>Fix Symfony Plugin usage for dropped API usages <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/37">#37</a></li>
+    <li>Fix error: Argument for @NotNull parameter 'element' of com/intellij/psi/PsiElementResolveResult.<init> must not be null <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/36">#36</a></li>
 </ul>
 
-<h2>0.4.1</h2>
-<ul>
-    <li>Add some static virtual annotation property classes <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/23">#23</a></li>
-</ul>
-
-<h2>0.4.0</h2>
-<ul>
-    <li>Support annotations without use import <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/24">#24</a></li>
-    <li>Add completion for @Translation annotation <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/25">#25</a></li>
-    <li>Add support for ContentEntityTypeAnnotation admin_permission and field_ui_base_route <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/23">#23</a></li>
-    <li>Add support for ConfigEntityType admin_permission annotation</li>
-</ul>
-
-<h2>0.3.0</h2>
-<ul>
-    <li>FormStateInterface::setRedirect should provide route completion</li>
-    <li>Add travis test suite <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/15">#15</a>; migrate yaml config index to new yaml plugin <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/14">#14</a>; use Java8 and update minimum api to PhpStorm 2016.1</li>
-    <li>Drop Symfony version string from plugin name</li>
-    <li>Add permission support <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/10">#10</a></li>
-    <li>Add linemaker for class forms in routing defaults key <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/11">#11</a></li>
-    <li>Add linemaker, indexer and completion for entity forms <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/11">#11</a></li>
-    <li>Add Action completion for _controller <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/20">#20</a></li>
-    <li>Add menu name index #13, Add parent menu value key completion for yaml menus <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/13">#13</a></li>
-    <li>Collect module controller on module namespace <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/21">#21</a></li>
-    <li>Provide route parameter completion <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/7">#7</a></li>
-    <li>Completion for non default Symfony route keys <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/12">#12</a></li>
-</ul>
-
-<h2>0.2.1</h2>
-<ul>
-    <li>Fix possible npe in index process <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/4">#4</a></li>
-</ul>
-
-<h2>0.2</h2>
-<ul>
-    <li>Fix / update more valid route signatures for Drupal8 beta release</li>
-    <li>Add indexer, completion and navigation for config values</li>
-</ul>
-
-<h2>0.1.1</h2>
-<ul>
-    <li>Fix missing route_name pattern filter for completion</li>
-</ul>
-
-<h2>0.1</h2>
-<ul>
-    <li>initial release (see feature list)</li>
-</ul>
-
+<br/>
+<a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/blob/master/CHANGELOG.md">see full changelog</a> | <a href="https://www.paypal.me/DanielEspendiller">Donate</a>
     ]]>
   </change-notes>
 

@@ -4,7 +4,7 @@ PhpStorm / IntelliJ Drupal Symfony Bridge
 [![Version](http://phpstorm.espend.de/badge/7487/version)](https://plugins.jetbrains.com/plugin/7487)
 [![Downloads](http://phpstorm.espend.de/badge/7487/downloads)](https://plugins.jetbrains.com/plugin/7487)
 [![Downloads last month](http://phpstorm.espend.de/badge/7487/last-month)](https://plugins.jetbrains.com/plugin/7487)
-[![Donate to this project using Paypal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5ZTGW6H4Y7MT8)
+[![Donate to this project using Paypal](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.me/DanielEspendiller)
 
 Provides Symfony components support for Drupal in PhpStorm and IntelliJ
 

@@ -1,3 +1,7 @@
+## 0.5
+* Fix Symfony Plugin usage for dropped API usages #37
+* Fix error: Argument for @NotNull parameter 'element' of com/intellij/psi/PsiElementResolveResult. <init>must not be null #36</init>
+
 ## 0.4.2
 * Fix api contract violation exception for config index [#27](https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/27)
 
