@@ -6,7 +6,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.util.ProcessingContext;
 import de.espend.idea.php.drupal.DrupalProjectComponent;
 import de.espend.idea.php.drupal.utils.TranslationUtil;
-import fr.adrienbrault.idea.symfony2plugin.TwigHelper;
+import fr.adrienbrault.idea.symfony2plugin.templating.TwigPattern;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -17,7 +17,7 @@ public class TwigCompletionContributor extends CompletionContributor {
     public TwigCompletionContributor() {
 
         // ''|t;
-        extend(CompletionType.BASIC, TwigHelper.getTranslationPattern("t"), new CompletionProvider<CompletionParameters>() {
+        extend(CompletionType.BASIC, TwigPattern.getTranslationPattern("t"), new CompletionProvider<CompletionParameters>() {
 
             @Override
             protected void addCompletions(@NotNull CompletionParameters completionParameters, ProcessingContext processingContext, @NotNull CompletionResultSet completionResultSet) {
