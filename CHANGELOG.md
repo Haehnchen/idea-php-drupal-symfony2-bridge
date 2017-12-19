@@ -1,3 +1,6 @@
+## 0.5.1
+* Fix Symfony Plugin usage for dropped API usages [#43](https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/43) [#42](https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/42) @mglaman
+
 ## 0.5
 * Fix Symfony Plugin usage for dropped API usages #37
 * Fix error: Argument for @NotNull parameter 'element' of com/intellij/psi/PsiElementResolveResult. <init>must not be null #36</init>

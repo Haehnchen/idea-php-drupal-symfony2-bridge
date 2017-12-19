@@ -1,7 +1,7 @@
 <idea-plugin version="2" url="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">
   <id>de.espend.idea.php.drupal</id>
   <name>Drupal Symfony Bridge</name>
-  <version>0.5</version>
+  <version>0.5.1</version>
   <vendor email="daniel@espendiller.net" url="http://www.espend.de">Daniel Espendiller</vendor>
 
   <description><![CDATA[
@@ -46,8 +46,7 @@
 
   <change-notes><![CDATA[
 <ul>
-    <li>Fix Symfony Plugin usage for dropped API usages <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/37">#37</a></li>
-    <li>Fix error: Argument for @NotNull parameter 'element' of com/intellij/psi/PsiElementResolveResult.<init> must not be null <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/36">#36</a></li>
+    <li>Fix Symfony Plugin usage for dropped API usages <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/43">#43</a> <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/42">#42</a> @mglaman</li>
 </ul>
 
 <br/>
