@@ -17,7 +17,7 @@ public class TwigCompletionContributor extends CompletionContributor {
     public TwigCompletionContributor() {
 
         // ''|t;
-        extend(CompletionType.BASIC, TwigPattern.getTranslationPattern("t"), new CompletionProvider<CompletionParameters>() {
+        extend(CompletionType.BASIC, TwigPattern.getTranslationKeyPattern("t"), new CompletionProvider<CompletionParameters>() {
 
             @Override
             protected void addCompletions(@NotNull CompletionParameters completionParameters, ProcessingContext processingContext, @NotNull CompletionResultSet completionResultSet) {
