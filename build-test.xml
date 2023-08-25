@@ -118,7 +118,7 @@
                 <fileset dir="${src}"/>
             </copy>
             <copy toDir="@{dest}/META-INF">
-                <fileset dir="${basedir}/META-INF"/>
+                <fileset dir="/META-INF"/>
             </copy>
         </sequential>
     </macrodef>

@@ -32,7 +32,7 @@ public class RouteFormLineMarkerProvider implements LineMarkerProvider {
     }
 
     @Override
-    public void collectSlowLineMarkers(@NotNull List<PsiElement> psiElements, @NotNull Collection<LineMarkerInfo> results) {
+    public void collectSlowLineMarkers(@NotNull List<? extends PsiElement> psiElements, @NotNull Collection<? super LineMarkerInfo<?>> results) {
         if(psiElements.size() == 0) {
             return;
         }
@@ -47,7 +47,7 @@ public class RouteFormLineMarkerProvider implements LineMarkerProvider {
         }
     }
 
-    private void collectRouteInlineClasses(@NotNull Collection<LineMarkerInfo> results, @NotNull Project project, @NotNull PsiElement psiElement) {
+    private void collectRouteInlineClasses(Collection<? super LineMarkerInfo<?>> results, @NotNull Project project, @NotNull PsiElement psiElement) {
 
         if(!(YamlElementPatternHelper.getSingleLineScalarKey("_form").accepts(psiElement) ||
             YamlElementPatternHelper.getSingleLineScalarKey("_entity_form").accepts(psiElement))

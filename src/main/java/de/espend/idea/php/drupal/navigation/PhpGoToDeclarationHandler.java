@@ -8,9 +8,11 @@ import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
 import de.espend.idea.php.drupal.DrupalProjectComponent;
 import de.espend.idea.php.drupal.utils.DrupalPattern;
 import fr.adrienbrault.idea.symfony2plugin.routing.RouteHelper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -30,10 +32,7 @@ public class PhpGoToDeclarationHandler implements GotoDeclarationHandler {
 
         PsiElement context = psiElement.getContext();
         if(context instanceof StringLiteralExpression && DrupalPattern.isAfterArrayKey(psiElement, "route_name")) {
-            PsiElement routeTarget = RouteHelper.getRouteNameTarget(psiElement.getProject(), ((StringLiteralExpression) context).getContents());
-            if(routeTarget != null) {
-                psiElementList.add(routeTarget);
-            }
+            psiElementList.addAll(RouteHelper.getRouteNameTarget(psiElement.getProject(), ((StringLiteralExpression) context).getContents()));
         }
 
         return psiElementList.toArray(new PsiElement[psiElementList.size()]);

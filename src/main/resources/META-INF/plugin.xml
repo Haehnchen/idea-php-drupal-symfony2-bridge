@@ -1,4 +1,4 @@
-<idea-plugin version="2" url="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">
+<idea-plugin url="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">
   <id>de.espend.idea.php.drupal</id>
   <name>Drupal Symfony Bridge</name>
   <version>0.5.1</version>

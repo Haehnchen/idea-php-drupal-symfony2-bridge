@@ -16,6 +16,8 @@ import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
+
 /**
  * @author Daniel Espendiller <daniel@espendiller.net>
  *
@@ -106,12 +108,7 @@ public class ContentEntityTypeAnnotation implements PhpAnnotationCompletionProvi
         @NotNull
         @Override
         public ResolveResult[] multiResolve(boolean b) {
-            PsiElement routeNameTarget = RouteHelper.getRouteNameTarget(element.getProject(), contents);
-            if(routeNameTarget == null) {
-                return new ResolveResult[0];
-            }
-
-            return PsiElementResolveResult.createResults(routeNameTarget);
+            return PsiElementResolveResult.createResults(RouteHelper.getRouteNameTarget(element.getProject(), contents));
         }
     }
 

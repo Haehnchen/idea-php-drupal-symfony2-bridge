@@ -10,7 +10,7 @@ import com.jetbrains.php.lang.psi.elements.ParameterList;
 import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
 import de.espend.idea.php.drupal.DrupalProjectComponent;
 import fr.adrienbrault.idea.symfony2plugin.Symfony2ProjectComponent;
-import fr.adrienbrault.idea.symfony2plugin.routing.RouteParameterReference;
+//import fr.adrienbrault.idea.symfony2plugin.routing.RouteParameterReference;
 import fr.adrienbrault.idea.symfony2plugin.routing.RouteReference;
 import fr.adrienbrault.idea.symfony2plugin.util.MethodMatcher;
 import fr.adrienbrault.idea.symfony2plugin.util.PsiElementUtils;
@@ -110,7 +110,7 @@ public class PhpRouteReferenceContributor extends PsiReferenceContributor {
                         return new PsiReference[0];
                     }
 
-                    return new PsiReference[]{ new RouteParameterReference((StringLiteralExpression) psiElement, routeName) };
+                    return new PsiReference[]{ /* new RouteParameterReference((StringLiteralExpression) psiElement, routeName) */};
 
                 }
 
