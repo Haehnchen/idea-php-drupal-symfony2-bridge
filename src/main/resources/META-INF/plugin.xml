@@ -76,7 +76,8 @@
       <completion.contributor language="yaml" implementationClass="de.espend.idea.php.drupal.completion.YamlCompletionContributor"/>
 
       <gotoDeclarationHandler implementation="de.espend.idea.php.drupal.navigation.PhpGoToDeclarationHandler"/>
-      <psi.referenceContributor implementation="de.espend.idea.php.drupal.references.PhpRouteReferenceContributor"/>
+      <psi.referenceContributor implementation="de.espend.idea.php.drupal.references.PhpRouteReferenceContributor"
+                                language="PHP"/>
 
       <codeInsight.lineMarkerProvider language="yaml" implementationClass="de.espend.idea.php.drupal.linemarker.RouteFormLineMarkerProvider"/>
 
