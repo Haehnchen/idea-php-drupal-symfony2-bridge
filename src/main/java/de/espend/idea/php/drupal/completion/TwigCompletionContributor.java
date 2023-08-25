@@ -17,13 +17,13 @@ public class TwigCompletionContributor extends CompletionContributor {
     public TwigCompletionContributor() {
 
         // ''|t;
-        extend(CompletionType.BASIC, TwigPattern.getTranslationPattern("t"), new CompletionProvider<CompletionParameters>() {
+        extend(CompletionType.BASIC, TwigPattern.getTranslationKeyPattern("t"), new CompletionProvider<>() {
 
             @Override
             protected void addCompletions(@NotNull CompletionParameters completionParameters, ProcessingContext processingContext, @NotNull CompletionResultSet completionResultSet) {
 
                 PsiElement psiElement = completionParameters.getOriginalPosition();
-                if(psiElement == null || !DrupalProjectComponent.isEnabled(psiElement)) {
+                if (psiElement == null || !DrupalProjectComponent.isEnabled(psiElement)) {
                     return;
                 }
 
