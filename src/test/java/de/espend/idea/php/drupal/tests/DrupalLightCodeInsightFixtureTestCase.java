@@ -693,41 +693,33 @@ public abstract class DrupalLightCodeInsightFixtureTestCase extends LightJavaCod
 
         @Override
         public void run() {
-            CommandProcessor.getInstance().executeCommand(getProject(), new Runnable() {
-                @Override
-                public void run() {
-                    final CodeCompletionHandlerBase handler = new CodeCompletionHandlerBase(CompletionType.BASIC) {
+            CommandProcessor.getInstance().executeCommand(getProject(), () -> {
+                final CodeCompletionHandlerBase handler = new CodeCompletionHandlerBase(CompletionType.BASIC) {
 
-                        @Override
-                        protected void completionFinished(final CompletionProgressIndicator indicator, boolean hasModifiers) {
+                    @Override
+                    protected void completionFinished(final CompletionProgressIndicator indicator, boolean hasModifiers) {
 
-                            // find our lookup element
-                            final LookupElement lookupElement = ContainerUtil.find(indicator.getLookup().getItems(), new Condition<LookupElement>() {
-                                @Override
-                                public boolean value(LookupElement lookupElement) {
-                                    return insert.match(lookupElement);
-                                }
-                            });
+                        // find our lookup element
+                        final LookupElement lookupElement = ContainerUtil.find(
+                            indicator.getLookup().getItems(),
+                            insert::match
+                        );
 
-                            if(lookupElement == null) {
-                                fail("No matching lookup element found");
-                            }
-
-                            // overwrite behavior and force completion + insertHandler
-                            CommandProcessor.getInstance().executeCommand(indicator.getProject(), new Runnable() {
-                                @Override
-                                public void run() {
-                                    indicator.setMergeCommand();
-                                    indicator.getLookup().finishLookup(Lookup.AUTO_INSERT_SELECT_CHAR, lookupElement);
-                                }
-                            }, "Autocompletion", null);
+                        if(lookupElement == null) {
+                            fail("No matching lookup element found");
                         }
-                    };
 
-                    Editor editor = InjectedLanguageUtil.getEditorForInjectedLanguageNoCommit(getEditor(), getFile());
-                    handler.invokeCompletion(getProject(), editor);
-                    PsiDocumentManager.getInstance(getProject()).commitAllDocuments();
-                }
+                        // overwrite behavior and force completion + insertHandler
+                        CommandProcessor.getInstance().executeCommand(indicator.getProject(), () -> {
+                            CommandProcessor.getInstance().setCurrentCommandGroupId("Completion" + indicator.hashCode());
+                            indicator.getLookup().finishLookup(Lookup.AUTO_INSERT_SELECT_CHAR, lookupElement);
+                        }, "Autocompletion", null);
+                    }
+                };
+
+                Editor editor = InjectedLanguageUtil.getEditorForInjectedLanguageNoCommit(getEditor(), getFile());
+                handler.invokeCompletion(getProject(), editor);
+                PsiDocumentManager.getInstance(getProject()).commitAllDocuments();
             }, null, null);
         }
     }
