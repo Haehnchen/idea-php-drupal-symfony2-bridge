@@ -1,3 +1,6 @@
+## 0.6.0
+* Fix compatibility issue, to mark plugin work again
+
 ## 0.5.1
 * Fix Symfony Plugin usage for dropped API usages [#43](https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/43) [#42](https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues/42) @mglaman
 
