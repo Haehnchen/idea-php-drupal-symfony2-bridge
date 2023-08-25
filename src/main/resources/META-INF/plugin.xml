@@ -2,17 +2,17 @@
   <id>de.espend.idea.php.drupal</id>
   <name>Drupal Symfony Bridge</name>
   <version>0.6.0</version>
-  <vendor email="daniel@espendiller.net" url="http://www.espend.de">Daniel Espendiller</vendor>
+  <vendor email="daniel@espendiller.net" url="https://www.espend.de">Daniel Espendiller</vendor>
 
   <description><![CDATA[
 
 <h1>Drupal Symfony Bridge</h1>
 
 <br>
-<a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">GitHub</a> | <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues">Issues</a> | <a href="http://symfony2-plugin.espend.de/">Documentation (Symfony Plugin)</a>  | <a href="https://www.paypal.me/DanielEspendiller">Donate</a>
+<a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">GitHub</a> | <a href="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge/issues">Issues</a> | <a href="https://symfony2-plugin.espend.de/">Documentation (Symfony Plugin)</a>  | <a href="https://www.paypal.me/DanielEspendiller">Donate</a>
 <br>
 
-<p>Integrates support for Symfony components in Drupal8 with <a href="http://plugins.jetbrains.com/plugin/7219">Symfony Plugin</a></p>
+<p>Integrates support for Symfony components in Drupal8 with <a href="https://plugins.jetbrains.com/plugin/7219">Symfony Plugin</a></p>
 
 <h2>Install</h2>
 <ul>
