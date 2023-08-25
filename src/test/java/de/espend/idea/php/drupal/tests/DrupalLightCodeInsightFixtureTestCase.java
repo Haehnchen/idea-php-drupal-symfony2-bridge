@@ -36,7 +36,7 @@ import com.intellij.psi.impl.source.tree.injected.InjectedLanguageUtil;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import com.intellij.util.Processor;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.indexing.FileBasedIndexImpl;
@@ -51,7 +51,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.util.*;
 
-public abstract class DrupalLightCodeInsightFixtureTestCase extends LightCodeInsightFixtureTestCase {
+public abstract class DrupalLightCodeInsightFixtureTestCase extends LightJavaCodeInsightFixtureTestCase {
 
     @Override
     public void setUp() throws Exception {
