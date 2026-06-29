@@ -1,5 +1,8 @@
 out/
+/.intellijPlatform
 /.idea
-/.idea/misc.xml
 /.gradle
 /build
+*.iml
+
+.kotlin
