@@ -11,7 +11,7 @@ import fr.adrienbrault.idea.symfony2plugin.stubs.indexes.externalizer.StringSetD
 import fr.adrienbrault.idea.symfony2plugin.util.PsiElementUtils;
 import fr.adrienbrault.idea.symfony2plugin.util.yaml.YamlHelper;
 import gnu.trove.THashMap;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.yaml.YAMLFileType;
 import org.jetbrains.yaml.psi.YAMLFile;
@@ -113,6 +113,5 @@ public class ConfigSchemaIndex extends FileBasedIndexExtension<String, Set<Strin
         return !(fileName.startsWith(".") || !fileName.endsWith(".schema.yml"));
     }
 }
-
 
 

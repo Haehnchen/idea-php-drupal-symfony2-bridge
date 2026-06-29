@@ -11,7 +11,7 @@ import de.espend.idea.php.annotation.extension.parameter.AnnotationPropertyParam
 import de.espend.idea.php.annotation.extension.parameter.PhpAnnotationReferenceProviderParameter;
 import de.espend.idea.php.drupal.index.PermissionIndex;
 import de.espend.idea.php.drupal.utils.IndexUtil;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

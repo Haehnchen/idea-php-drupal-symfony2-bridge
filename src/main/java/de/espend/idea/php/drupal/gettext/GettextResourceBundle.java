@@ -1,7 +1,7 @@
 package de.espend.idea.php.drupal.gettext;
 
 
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
