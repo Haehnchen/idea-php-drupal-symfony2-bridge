@@ -1,3 +1,7 @@
+## 0.7.0
+
+* migrate to `org.apache.commons.lang3` (Daniel Espendiller)
+
 ## 0.6.0
 * Fix compatibility issue, to mark plugin work again
 

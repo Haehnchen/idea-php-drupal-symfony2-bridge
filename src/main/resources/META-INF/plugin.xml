@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/Haehnchen/idea-php-drupal-symfony2-bridge">
   <id>de.espend.idea.php.drupal</id>
   <name>Drupal Symfony Bridge</name>
-  <version>0.6.0</version>
+  <version>0.7.0</version>
   <vendor email="daniel@espendiller.net" url="http://espend.de?p=de.espend.idea.php.drupal">espend_de</vendor>
 
   <description><![CDATA[
