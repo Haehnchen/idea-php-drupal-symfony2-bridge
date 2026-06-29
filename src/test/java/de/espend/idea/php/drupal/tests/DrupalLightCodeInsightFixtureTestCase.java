@@ -446,7 +446,7 @@ public abstract class DrupalLightCodeInsightFixtureTestCase extends LightJavaCod
         PsiFile psiFile = myFixture.configureByText(filename, content);
         PsiElement psiElement = myFixture.getFile().findElementAt(myFixture.getCaretOffset());
 
-        AnnotationHolderImpl annotations = new AnnotationHolderImpl(new AnnotationSession(psiFile));
+        AnnotationHolderImpl annotations = new AnnotationHolderImpl(new AnnotationSession(psiFile), false);
 
         for (Annotator annotator : LanguageAnnotators.INSTANCE.allForLanguage(psiFile.getLanguage())) {
             annotator.annotate(psiElement, annotations);
