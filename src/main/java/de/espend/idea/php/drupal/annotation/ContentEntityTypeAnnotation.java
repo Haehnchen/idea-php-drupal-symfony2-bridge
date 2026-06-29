@@ -12,7 +12,7 @@ import de.espend.idea.php.drupal.index.PermissionIndex;
 import de.espend.idea.php.drupal.registrar.YamlPermissionGotoCompletion;
 import de.espend.idea.php.drupal.utils.IndexUtil;
 import fr.adrienbrault.idea.symfony2plugin.routing.RouteHelper;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

@@ -1,7 +1,7 @@
 package de.espend.idea.php.drupal.registrar.utils;
 
 import com.intellij.psi.PsiElement;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.yaml.psi.YAMLScalar;

@@ -5,7 +5,7 @@ import de.espend.idea.php.annotation.extension.PhpAnnotationVirtualProperties;
 import de.espend.idea.php.annotation.extension.parameter.AnnotationCompletionProviderParameter;
 import de.espend.idea.php.annotation.extension.parameter.AnnotationVirtualPropertyCompletionParameter;
 import de.espend.idea.php.annotation.extension.parameter.AnnotationVirtualPropertyTargetsParameter;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;

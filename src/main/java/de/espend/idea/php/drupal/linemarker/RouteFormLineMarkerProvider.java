@@ -100,10 +100,15 @@ public class RouteFormLineMarkerProvider implements LineMarkerProvider {
             return;
         }
 
+        PsiElement key = ((YAMLKeyValue) parent1).getKey();
+        if(key == null) {
+            return;
+        }
+
         NavigationGutterIconBuilder<PsiElement> builder = NavigationGutterIconBuilder.create(Symfony2Icons.FORM_TYPE_LINE_MARKER).
             setTargets(classesInterface).
             setTooltipText("Navigate to form");
 
-        results.add(builder.createLineMarkerInfo(parent1));
+        results.add(builder.createLineMarkerInfo(key));
     }
 }
